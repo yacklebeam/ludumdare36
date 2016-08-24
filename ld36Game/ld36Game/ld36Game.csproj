@@ -38,8 +38,8 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AssetManager.cs" />
-    <Compile Include="EntityManager.cs" />
+    <Compile Include="Managers\AssetManager.cs" />
+    <Compile Include="Managers\EntityManager.cs" />
     <Compile Include="GameStates\MenuState.cs" />
     <Compile Include="GameStates\MainState.cs" />
     <Compile Include="Program.cs" />

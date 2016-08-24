@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 
-namespace ld36Game
+namespace ld36Game.Managers
 {
     class AssetManager
     {

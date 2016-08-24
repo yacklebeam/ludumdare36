@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <summary>
-//          Description: Helper for generating the game's main menu
+//          Description: Helper for generating the game's main menu.
 //          Author: Trent Clostio
 //          Contributing Authors: Jacob Troxel
 // </summary>
