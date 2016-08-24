@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>K:/ludumdare36/ld36Game/ld36Game/Content/images/test-texture.png</File>
+    <File>K:/ludumdare36/ld36Game/ld36Game/Content/images/enemy-texture.png</File>
+  </SourceFiles>
+</SourceFileCollection>
