@@ -40,8 +40,8 @@
   <ItemGroup>
     <Compile Include="AssetManager.cs" />
     <Compile Include="EntityManager.cs" />
-    <Compile Include="GameObjects\MainMenu.cs" />
-    <Compile Include="GameStates\MainGameState.cs" />
+    <Compile Include="GameStates\MenuState.cs" />
+    <Compile Include="GameStates\MainState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -20,6 +20,7 @@ namespace ld36Game.GameStates
         private SpriteFont spriteFont;
         private EntityManager eManager;
         private AssetManager aManager;
+        private MenuState menuState;
 
         private string gameTitle = "SPEAR CHUCKERS(TM)"; // Because why not
 
@@ -46,9 +47,16 @@ namespace ld36Game.GameStates
         /// <summary>Loads the content.</summary>
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            spriteFont = Content.Load<SpriteFont>("fonts/MainFont");
+            string[] menuItems = { "Start Game", "High Scores", "Credits", "Exit Game" };
 
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            menuState = new MenuState(this,
+                                      spriteBatch,
+                                      Content.Load<SpriteFont>("fonts/MenuFont"),
+                                      menuItems);
+
+            Components.Add(menuState);
             aManager.loadImageAsset("player", "images/test-texture", Content);
             aManager.loadImageAsset("enemy", "images/enemy-texture", Content);
         }
@@ -114,10 +122,8 @@ namespace ld36Game.GameStates
                 }
             }
 
-            spriteBatch.DrawString(spriteFont, gameTitle, new Vector2(25, 25), Color.Red);
-
-            spriteBatch.End();
             base.Draw(gameTime);
+            spriteBatch.End();
         }
     }
 }
