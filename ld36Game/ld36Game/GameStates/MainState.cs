@@ -1,11 +1,19 @@
-﻿using Microsoft.Xna.Framework;
+﻿//-----------------------------------------------------------------------
+// <summary>
+//          Description: The game's main state.
+//          Author: Jacob Troxel
+//          Contributing Authors: Trent Clostio
+// </summary>
+//-----------------------------------------------------------------------
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 
 namespace ld36Game.GameStates
 {
-    public class MainGameState : Game
+    public class MainState : Game
     {
         GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -15,7 +23,7 @@ namespace ld36Game.GameStates
 
         private string gameTitle = "SPEAR CHUCKERS(TM)"; // Because why not
 
-        public MainGameState()
+        public MainState()
         {
             graphics = new GraphicsDeviceManager(this);
             eManager = new EntityManager();
@@ -35,6 +43,7 @@ namespace ld36Game.GameStates
             //END TEST
         }
 
+        /// <summary>Loads the content.</summary>
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -49,6 +58,8 @@ namespace ld36Game.GameStates
             Content.Unload();
         }
 
+        /// <summary>Updates the specified game time.</summary>
+        /// <param name="gameTime">The game time.</param>
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -70,7 +81,6 @@ namespace ld36Game.GameStates
             //end test code
 
             //test code for mouse click, ship go when clicked
-
             if(ms.LeftButton == ButtonState.Pressed)
             {
                 Vector2 newVel = new Vector2();

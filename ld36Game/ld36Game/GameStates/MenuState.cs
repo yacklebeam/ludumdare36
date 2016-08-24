@@ -18,9 +18,9 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Storage;
 
-namespace ld36Game.GameObjects
+namespace ld36Game.GameStates
 {
-    public class MainMenu : Microsoft.Xna.Framework.DrawableGameComponent
+    public class MenuState : Microsoft.Xna.Framework.DrawableGameComponent
     {
         string[] menuItems;
         int selectedIndex;
@@ -51,12 +51,12 @@ namespace ld36Game.GameObjects
             }
         }
 
-        /// <summary>Initializes a new instance of the <see cref="MainMenu"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="MenuState"/> class.</summary>
         /// <param name="game">The game.</param>
         /// <param name="spriteBatch">The sprite batch.</param>
         /// <param name="spriteFont">The sprite font.</param>
         /// <param name="menuItems">The menu items.</param>
-        public MainMenu(Game game,
+        public MenuState(Game game,
                         SpriteBatch spriteBatch,
                         SpriteFont spriteFont,
                         string[] menuItems) : base(game)
