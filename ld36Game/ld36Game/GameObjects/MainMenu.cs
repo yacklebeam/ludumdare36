@@ -38,8 +38,6 @@ namespace ld36Game.GameObjects
         float width = 0f;
         float height = 0f;
 
-        public MainMenu(Game game) : base(game) { }
-
         public int SelectedIndex
         {
             get { return selectedIndex; }
@@ -53,10 +51,15 @@ namespace ld36Game.GameObjects
             }
         }
 
-        public void MenuComponent(Game game,
-                                  SpriteBatch spriteBatch,
-                                  SpriteFont spriteFont,
-                                  string[] menuItems)
+        /// <summary>Initializes a new instance of the <see cref="MainMenu"/> class.</summary>
+        /// <param name="game">The game.</param>
+        /// <param name="spriteBatch">The sprite batch.</param>
+        /// <param name="spriteFont">The sprite font.</param>
+        /// <param name="menuItems">The menu items.</param>
+        public MainMenu(Game game,
+                        SpriteBatch spriteBatch,
+                        SpriteFont spriteFont,
+                        string[] menuItems) : base(game)
         {
             this.spriteBatch = spriteBatch;
             this.spriteFont = spriteFont;
