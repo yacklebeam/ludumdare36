@@ -14,6 +14,7 @@ namespace ld36Game
         public double height;
         public double width; //for hitbox
         public float rotationAngle; //ROTATE
+        public float rotationOffset; //fuck me
         public string spriteId; //use to get RECT and SPRITE
 
         public Entity(  Vector2 p,
@@ -22,6 +23,7 @@ namespace ld36Game
                         double h,
                         double w,
                         float r,
+                        float ro,
                         string s)
         {
             position = p;
@@ -31,6 +33,7 @@ namespace ld36Game
             width = w;
             rotationAngle = r;
             spriteId = s;
+            rotationOffset = ro;
         }
     }
 
@@ -50,12 +53,38 @@ namespace ld36Game
 
         public Entity getEntity(int index)
         {
-            return entities[index];
+            if(index <= entities.Count) return entities[index];
+            return null;
         }
 
         public int getCount()
         {
             return entities.Count;
+        }
+
+
+        ///////////////////////////////////////////////////
+        //                                               //
+        //  THE FUNCTIONS THAT FOLLOW ARE SO BAD THANKS  //
+        //                                               //
+        ///////////////////////////////////////////////////
+
+        public void setRotation(int index, float value)
+        {
+            ////HOLY FUCK NO CLEAN THIS UP
+            entities[index].rotationAngle = value;
+        }
+
+        public void setVelocity(int index, Vector2 vec)
+        {
+            ////LMAO WTF DUDE WHY
+            entities[index].velocity = vec;
+        }
+
+        public void setPosition(int index, Vector2 vec)
+        {
+            ////NAH MAN THIS HAS GOTTA STOP
+            entities[index].position = vec;
         }
     }
 }

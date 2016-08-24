@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace ld36Game
 {
@@ -24,8 +25,8 @@ namespace ld36Game
             base.Initialize();
 
             //TEST, MOVE TO LEVEL LOADER
-            Entity player = new Entity(new Vector2(50.0f, 50.0f), new Vector2(), new Vector2(), 75, 98, 0.0f, "player");
-            Entity player2 = new Entity(new Vector2(400.0f, 50.0f), new Vector2(), new Vector2(), 75, 98, 0.0f, "enemy");
+            Entity player = new Entity(new Vector2(50.0f, 50.0f), new Vector2(49.0f, 37.5f), new Vector2(), 75, 98, 0.0f, (float)Math.PI / 2.0f, "player");
+            Entity player2 = new Entity(new Vector2(400.0f, 50.0f), new Vector2(49.0f, 37.5f), new Vector2(), 75, 98, 0.0f, -(float)Math.PI / 2.0f, "enemy");
             eManager.addEntity(player);
             eManager.addEntity(player2);
             //END TEST
@@ -48,6 +49,39 @@ namespace ld36Game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            //test code for mouse, set rotation to mouse cursor
+            MouseState ms = Mouse.GetState();
+            double curX = ms.X;
+            double curY = ms.Y;
+
+            Entity e = eManager.getEntity(0);
+
+            double oldX = e.position.X;
+            double oldY = e.position.Y;
+
+            double theta = Math.Atan2(curY - oldY, curX - oldX);
+
+            eManager.setRotation(0, (float)theta);
+            //end test code
+
+            //test code for mouse click, ship go when clicked
+
+            if(ms.LeftButton == ButtonState.Pressed)
+            {
+                Vector2 newVel = new Vector2();
+                double xChange = 5.0f * Math.Cos(theta);
+                double yChange = 5.0f * Math.Sin(theta);
+
+                newVel.X = (float)xChange;
+                newVel.Y = (float)yChange;
+                eManager.setVelocity(0, newVel);
+
+                Vector2 newPos = e.position + newVel;
+                eManager.setPosition(0, newPos);
+            }
+
+            //end test code
+
             base.Update(gameTime);
         }
 
@@ -60,7 +94,8 @@ namespace ld36Game
                 Entity e = eManager.getEntity(i);
                 if(!e.Equals(null))
                 {
-                    spriteBatch.Draw(aManager.getTexture(e.spriteId), e.position, null, Color.White, e.rotationAngle, e.center, 1.0f, SpriteEffects.None, 0.0f);
+                    float adjustedAngle = e.rotationAngle + e.rotationOffset;
+                    spriteBatch.Draw(aManager.getTexture(e.spriteId), e.position, null, Color.White, adjustedAngle, e.center, 1.0f, SpriteEffects.None, 0.0f);
                 }
             }
             spriteBatch.End();
