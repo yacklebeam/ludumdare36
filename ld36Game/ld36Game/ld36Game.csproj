@@ -40,7 +40,8 @@
   <ItemGroup>
     <Compile Include="AssetManager.cs" />
     <Compile Include="EntityManager.cs" />
-    <Compile Include="MainGame.cs" />
+    <Compile Include="GameObjects\MainMenu.cs" />
+    <Compile Include="GameStates\MainGameState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,6 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

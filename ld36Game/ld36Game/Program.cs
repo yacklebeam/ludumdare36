@@ -1,4 +1,5 @@
 ﻿using System;
+using ld36Game.GameStates;
 
 namespace ld36Game
 {
@@ -8,7 +9,7 @@ namespace ld36Game
         [STAThread]
         static void Main()
         {
-            using (var game = new MainGame())
+            using (var game = new MainGameState())
                 game.Run();
         }
     }

@@ -3,16 +3,19 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 
-namespace ld36Game
+namespace ld36Game.GameStates
 {
-    public class MainGame : Game
+    public class MainGameState : Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        EntityManager eManager;
-        AssetManager aManager;
+        private SpriteBatch spriteBatch;
+        private SpriteFont spriteFont;
+        private EntityManager eManager;
+        private AssetManager aManager;
 
-        public MainGame()
+        private string gameTitle = "SPEAR CHUCKERS(TM)"; // Because why not
+
+        public MainGameState()
         {
             graphics = new GraphicsDeviceManager(this);
             eManager = new EntityManager();
@@ -35,6 +38,8 @@ namespace ld36Game
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteFont = Content.Load<SpriteFont>("fonts/MainFont");
+
             aManager.loadImageAsset("player", "images/test-texture", Content);
             aManager.loadImageAsset("enemy", "images/enemy-texture", Content);
         }
@@ -98,6 +103,9 @@ namespace ld36Game
                     spriteBatch.Draw(aManager.getTexture(e.spriteId), e.position, null, Color.White, adjustedAngle, e.center, 1.0f, SpriteEffects.None, 0.0f);
                 }
             }
+
+            spriteBatch.DrawString(spriteFont, gameTitle, new Vector2(25, 25), Color.Red);
+
             spriteBatch.End();
             base.Draw(gameTime);
         }

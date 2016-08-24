@@ -37,3 +37,9 @@
 /processorParam:TextureFormat=Color
 /build:images\enemy-texture.png
 
+#begin fonts/MainFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:fonts/MainFont.spritefont
+
