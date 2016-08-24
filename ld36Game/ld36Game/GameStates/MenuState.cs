@@ -34,6 +34,9 @@ namespace ld36Game.GameStates
         SpriteBatch spriteBatch;
         SpriteFont spriteFont;
 
+        private const string TITLE = "SPEAR CHUCKERS";
+        private SpriteFont titleFont;
+
         Vector2 position;
         float width = 0f;
         float height = 0f;
@@ -123,6 +126,12 @@ namespace ld36Game.GameStates
             oldState = keyState;
         }
 
+        /// <summary>Is a piece of shit that doesn't work.</summary>
+        //protected override void LoadContent()
+        //{
+        //    titleFont = Content.Load<SpriteFont>("fonts/TitleFont");
+        //}
+
         /// <summary>Draws the specified game time.</summary>
         /// <param name="gameTime">The game time.</param>
         public override void Draw(GameTime gameTime)
@@ -146,6 +155,8 @@ namespace ld36Game.GameStates
 
                 location.Y += spriteFont.LineSpacing + 5;
             }
+
+            spriteBatch.DrawString(spriteFont, TITLE, new Vector2(100, 25), Color.Orange);
         }
     }
 }

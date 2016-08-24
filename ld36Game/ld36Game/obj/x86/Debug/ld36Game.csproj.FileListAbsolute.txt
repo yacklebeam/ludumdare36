@@ -53,3 +53,4 @@ C:\Users\trent.clostio\projects\ludumdare36\ld36Game\ld36Game\bin\Windows\x86\De
 C:\Users\trent.clostio\projects\ludumdare36\ld36Game\ld36Game\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\trent.clostio\projects\ludumdare36\ld36Game\ld36Game\obj\x86\Debug\ld36Game.csprojResolveAssemblyReference.cache
 C:\Users\trent.clostio\projects\ludumdare36\ld36Game\ld36Game\bin\Windows\x86\Debug\Content\fonts\MenuFont.xnb
+C:\Users\trent.clostio\projects\ludumdare36\ld36Game\ld36Game\bin\Windows\x86\Debug\Content\fonts\TitleFont.xnb

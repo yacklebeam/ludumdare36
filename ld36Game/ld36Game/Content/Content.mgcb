@@ -43,3 +43,9 @@
 /processorParam:TextureFormat=Compressed
 /build:fonts\MenuFont.spritefont
 
+#begin fonts/TitleFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:fonts/TitleFont.spritefont
+

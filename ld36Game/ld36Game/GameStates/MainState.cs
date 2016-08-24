@@ -17,12 +17,9 @@ namespace ld36Game.GameStates
     {
         GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private SpriteFont spriteFont;
         private EntityManager eManager;
         private AssetManager aManager;
         private MenuState menuState;
-
-        private string gameTitle = "SPEAR CHUCKERS(TM)"; // Because why not
 
         public MainState()
         {
