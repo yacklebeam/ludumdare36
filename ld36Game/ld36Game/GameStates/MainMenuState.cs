@@ -20,7 +20,7 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace ld36Game.GameStates
 {
-    public class MenuState : Microsoft.Xna.Framework.DrawableGameComponent
+    public class MainMenuState : Microsoft.Xna.Framework.DrawableGameComponent
     {
         string[] menuItems;
         int selectedIndex;
@@ -54,12 +54,12 @@ namespace ld36Game.GameStates
             }
         }
 
-        /// <summary>Initializes a new instance of the <see cref="MenuState"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="MainMenuState"/> class.</summary>
         /// <param name="game">The game.</param>
         /// <param name="spriteBatch">The sprite batch.</param>
         /// <param name="spriteFont">The sprite font.</param>
         /// <param name="menuItems">The menu items.</param>
-        public MenuState(Game game,
+        public MainMenuState(Game game,
                         SpriteBatch spriteBatch,
                         SpriteFont spriteFont,
                         string[] menuItems) : base(game)

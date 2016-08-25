@@ -15,15 +15,15 @@ using ld36Game.Managers;
 
 namespace ld36Game.GameStates
 {
-    public class MainState : Game
+    public class MainGameState : Game
     {
         GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private EntityManager eManager;
         private AssetManager aManager;
-        private MenuState menuState;
+        private MainMenuState menuState;
 
-        public MainState()
+        public MainGameState()
         {
             graphics = new GraphicsDeviceManager(this);
             eManager = new EntityManager();
@@ -56,7 +56,7 @@ namespace ld36Game.GameStates
 
             StateManager.Instance.LoadContent(Content);
 
-            menuState = new MenuState(this,
+            menuState = new MainMenuState(this,
                                       spriteBatch,
                                       Content.Load<SpriteFont>("fonts/MenuFont"),
                                       menuItems);

@@ -16,12 +16,17 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
+using ld36Game.GameStates;
+
 namespace ld36Game.Managers
 {
     public class StateManager
     {
         private static StateManager instance;
         public Vector2 Dimensions { private set; get; }
+        public ContentManager Content { private set; get; }
+
+        BaseGameState currentState;
 
         public static StateManager Instance
         {
@@ -37,27 +42,29 @@ namespace ld36Game.Managers
         public StateManager()
         {
             Dimensions = new Vector2(640, 480);
+            currentState = new SplashScreenState();
         }
 
 
         public void LoadContent(ContentManager Content)
         {
-
+            this.Content = new ContentManager(Content.ServiceProvider, "Content");
+            currentState.LoadContent();
         }
 
         public void UnloadContent()
         {
-
+            currentState.UnloadContent();
         }
 
         public void Update(GameTime gameTime)
         {
-
+            currentState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
+            currentState.Draw(spriteBatch);
         }
     }
 }

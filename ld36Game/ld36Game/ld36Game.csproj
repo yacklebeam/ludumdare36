@@ -38,10 +38,13 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GameStates\BaseGameState.cs" />
+    <Compile Include="GameStates\SplashScreenState.cs" />
     <Compile Include="Managers\AssetManager.cs" />
     <Compile Include="Managers\EntityManager.cs" />
-    <Compile Include="GameStates\MenuState.cs" />
-    <Compile Include="GameStates\MainState.cs" />
+    <Compile Include="GameStates\MainMenuState.cs" />
+    <Compile Include="GameStates\MainGameState.cs" />
+    <Compile Include="Managers\StateManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
