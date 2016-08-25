@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+
 using ld36Game.Managers;
 
 namespace ld36Game.GameStates
@@ -32,14 +33,18 @@ namespace ld36Game.GameStates
 
         protected override void Initialize()
         {
-            base.Initialize();
-
             //TEST, MOVE TO LEVEL LOADER
             Entity player = new Entity(new Vector2(50.0f, 50.0f), new Vector2(49.0f, 37.5f), new Vector2(), 75, 98, 0.0f, (float)Math.PI / 2.0f, "player");
             Entity player2 = new Entity(new Vector2(400.0f, 50.0f), new Vector2(49.0f, 37.5f), new Vector2(), 75, 98, 0.0f, -(float)Math.PI / 2.0f, "enemy");
             eManager.addEntity(player);
             eManager.addEntity(player2);
             //END TEST
+
+            graphics.PreferredBackBufferWidth = (int)StateManager.Instance.Dimensions.X;
+            graphics.PreferredBackBufferHeight = (int)StateManager.Instance.Dimensions.Y;
+            graphics.ApplyChanges();
+
+            base.Initialize();
         }
 
         /// <summary>Loads the content.</summary>
@@ -48,6 +53,8 @@ namespace ld36Game.GameStates
             string[] menuItems = { "Start Game", "High Scores", "Credits", "Exit Game" };
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            StateManager.Instance.LoadContent(Content);
 
             menuState = new MenuState(this,
                                       spriteBatch,
@@ -61,6 +68,7 @@ namespace ld36Game.GameStates
 
         protected override void UnloadContent()
         {
+            StateManager.Instance.UnloadContent();
             Content.Unload();
         }
 
@@ -103,6 +111,8 @@ namespace ld36Game.GameStates
 
             //end test code
 
+            StateManager.Instance.Update(gameTime);
+
             base.Update(gameTime);
         }
 
@@ -119,6 +129,8 @@ namespace ld36Game.GameStates
                     spriteBatch.Draw(aManager.getTexture(e.spriteId), e.position, null, Color.White, adjustedAngle, e.center, 1.0f, SpriteEffects.None, 0.0f);
                 }
             }
+
+            StateManager.Instance.Draw(spriteBatch);
 
             base.Draw(gameTime);
             spriteBatch.End();
