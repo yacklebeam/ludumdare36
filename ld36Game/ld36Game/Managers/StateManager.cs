@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <summary>
-//          Description: Helper for generating the game's main menu.
+//          Description: Manages the game's states.
 //          Author: Trent Clostio
 //          Contributing Authors: Jacob Troxel
 // </summary>
@@ -32,6 +32,11 @@ namespace ld36Game.Managers
 
                 return instance;
             }
+        }
+
+        public StateManager()
+        {
+            Dimensions = new Vector2(640, 480);
         }
 
 

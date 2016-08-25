@@ -1,4 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿//-----------------------------------------------------------------------
+// <summary>
+//          Description: Manages the game's entities.
+//          Author: Jacob Troxel
+//          Contributing Authors: Trent Clostio
+// </summary>
+//-----------------------------------------------------------------------
+
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace ld36Game.Managers

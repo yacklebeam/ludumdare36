@@ -1,4 +1,12 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿//-----------------------------------------------------------------------
+// <summary>
+//          Description: Manages the game's assets.
+//          Author: Jacob Troxel
+//          Contributing Authors: Trent Clostio
+// </summary>
+//-----------------------------------------------------------------------
+
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 
