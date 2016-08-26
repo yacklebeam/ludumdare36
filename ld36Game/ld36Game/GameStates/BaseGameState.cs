@@ -24,7 +24,6 @@ namespace ld36Game.GameStates
     {
         protected ContentManager content;
 
-        [XmlIgnore]
         public Type Type;
 
         public BaseGameState()
