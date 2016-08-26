@@ -34,15 +34,13 @@ namespace ld36Game.Managers
 
         public Vector2 Dimensions { private set; get; }
         public ContentManager Content { private set; get; }
+        public String GameStateTitle { private set; get; }
+        public Color Background { private set; get; }
 
-        BaseGameState currentState;
+        public static BaseGameState currentState, newState;
         public GraphicsDevice graphicsDevice;
         public SpriteBatch spriteBatch;
         public SpriteFont spriteFont;
-
-        Color background;
-        String gameStateTitle;
-        Rectangle screen;
 
         private static StateManager instance;
 
@@ -51,18 +49,18 @@ namespace ld36Game.Managers
             get
             {
                 if (instance == null)
-                    instance = new StateManager();
+                    instance = new StateManager(newState);
 
                 return instance;
             }
         }
 
-        public StateManager()
+        public StateManager(object newState)
         {
             Dimensions = new Vector2(640, 480);
-            gameState = GameStates.State1;
-            gameStateTitle = "State 1";
-            background = Color.Red;
+            GameStateTitle = String.Empty;
+            Background = Color.Red;
+            gameState = (GameStates)newState;
         }
         
         public void LoadContent(ContentManager Content)
