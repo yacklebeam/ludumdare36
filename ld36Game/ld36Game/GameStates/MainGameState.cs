@@ -21,7 +21,6 @@ namespace ld36Game.GameStates
         private SpriteBatch spriteBatch;
         private EntityManager eManager;
         private AssetManager aManager;
-        private MainMenuState menuState;
 
         public MainGameState()
         {
@@ -49,19 +48,11 @@ namespace ld36Game.GameStates
 
         /// <summary>Loads the content.</summary>
         protected override void LoadContent()
-        {
-            string[] menuItems = { "Start Game", "High Scores", "Credits", "Exit Game" };
-
+        { 
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             StateManager.Instance.LoadContent(Content);
 
-            menuState = new MainMenuState(this,
-                                      spriteBatch,
-                                      Content.Load<SpriteFont>("fonts/MenuFont"),
-                                      menuItems);
-
-            Components.Add(menuState);
             aManager.loadImageAsset("player", "images/test-texture", Content);
             aManager.loadImageAsset("enemy", "images/enemy-texture", Content);
         }

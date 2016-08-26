@@ -25,8 +25,11 @@ namespace ld36Game.Managers
         private static StateManager instance;
         public Vector2 Dimensions { private set; get; }
         public ContentManager Content { private set; get; }
+        XmlManager<BaseGameState> xmlStateManager;
 
-        BaseGameState currentState;
+        BaseGameState currentState, newState;
+        public GraphicsDevice graphicsDevice;
+        public SpriteBatch spriteBatch;
 
         public static StateManager Instance
         {
@@ -37,6 +40,16 @@ namespace ld36Game.Managers
 
                 return instance;
             }
+        }
+
+        public void ChangeStates(string stateName)
+        {
+            newState = (BaseGameState)Activator.CreateInstance(Type.GetType("ld36Game.GameStates." + stateName));
+        }
+
+        void Transition()
+        {
+
         }
 
         public StateManager()

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -23,6 +24,14 @@ namespace ld36Game.GameStates
     public class BaseGameState
     {
         protected ContentManager content;
+
+        [XmlIgnore]
+        public Type Type;
+
+        public BaseGameState()
+        {
+            Type = this.GetType();
+        }
 
         public virtual void LoadContent()
         {

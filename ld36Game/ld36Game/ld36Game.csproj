@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
+    <OutputPath>.\</OutputPath>
     <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -42,9 +42,10 @@
     <Compile Include="GameStates\SplashScreenState.cs" />
     <Compile Include="Managers\AssetManager.cs" />
     <Compile Include="Managers\EntityManager.cs" />
-    <Compile Include="GameStates\MainMenuState.cs" />
+    <None Include="GameStates\MainMenuState.cs.backup" />
     <Compile Include="GameStates\MainGameState.cs" />
     <Compile Include="Managers\StateManager.cs" />
+    <Compile Include="Managers\XmlManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -12,7 +12,7 @@ namespace ld36Game.GameStates
     public class SplashScreenState : BaseGameState
     {
         Texture2D splashImage;
-        string path;
+        public string path;
 
         public override void LoadContent()
         {
