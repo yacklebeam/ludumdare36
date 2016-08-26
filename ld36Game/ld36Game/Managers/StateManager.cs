@@ -25,7 +25,6 @@ namespace ld36Game.Managers
         private static StateManager instance;
         public Vector2 Dimensions { private set; get; }
         public ContentManager Content { private set; get; }
-        XmlManager<BaseGameState> xmlStateManager;
 
         BaseGameState currentState, newState;
         public GraphicsDevice graphicsDevice;
