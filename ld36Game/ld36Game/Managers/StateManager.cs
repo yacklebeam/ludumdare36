@@ -15,73 +15,207 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 using ld36Game.GameStates;
+using System.Diagnostics;
 
 namespace ld36Game.Managers
 {
-    public class StateManager
+    public class StateManager : DrawableGameComponent
     {
-        enum GameStates
+        List<BaseGameState> states = new List<BaseGameState>();
+        List<BaseGameState> tempScreensList = new List<BaseGameState>();
+
+        KeyboardState input = new KeyboardState();
+
+        SpriteBatch spriteBatch;
+        SpriteFont font;
+        Texture2D blankTexture;
+
+        bool isInitialized;
+
+        bool traceEnabled;
+
+        public StateManager(Game game) : base(game) { }
+
+        public SpriteBatch SpriteBatch
         {
-            State1,
-            State2,
-            State3,
-            State4
+            get { return spriteBatch; }
         }
 
-        GameStates gameState;
-
-        public Vector2 Dimensions { private set; get; }
-        public ContentManager Content { private set; get; }
-        public String GameStateTitle { private set; get; }
-        public Color Background { private set; get; }
-
-        public static BaseGameState currentState, newState;
-        public GraphicsDevice graphicsDevice;
-        public SpriteBatch spriteBatch;
-        public SpriteFont spriteFont;
-
-        private static StateManager instance;
-
-        public static StateManager Instance
+        public SpriteFont Font
         {
-            get
-            {
-                if (instance == null)
-                    instance = new StateManager(newState);
+            get { return font; }
+        }
 
-                return instance;
+        // If true, gives list of screens each time the list is updated.
+        // Useful for checking for add/remove timing errors.
+        public bool TraceEnabled
+        {
+            get { return traceEnabled; }
+            set { traceEnabled = value; }
+        }
+
+        public Texture2D BlankTexture
+        {
+            get { return blankTexture; }
+        }
+
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            isInitialized = true;
+        }
+
+        protected override void LoadContent()
+        {
+            ContentManager content = Game.Content;
+
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            font = content.Load<SpriteFont>("fonts/MenuFont");
+            blankTexture = content.Load<Texture2D>("images/SplashScreen");
+
+            foreach(BaseGameState state in states)
+            {
+                state.Activate(false);
             }
         }
 
-        public StateManager(object newState)
+        protected override void UnloadContent()
         {
-            Dimensions = new Vector2(640, 480);
-            GameStateTitle = String.Empty;
-            Background = Color.Red;
-            gameState = (GameStates)newState;
-        }
-        
-        public void LoadContent(ContentManager Content)
-        {
-            this.Content = new ContentManager(Content.ServiceProvider, "Content");
-            currentState.LoadContent();
+            foreach(BaseGameState state in states)
+            {
+                state.Unload();
+            }
         }
 
-        public void UnloadContent()
+        public override void Update(GameTime gameTime)
         {
-            currentState.UnloadContent();
+            tempScreensList.Clear();
+
+            foreach(BaseGameState state in states)
+            {
+                tempScreensList.Add(state);
+            }
+
+            bool otherScreenHasFocus = !Game.IsActive;
+            bool coveredByOtherScreen = false;
+
+            while (tempScreensList.Count > 0)
+            {
+                BaseGameState state = tempScreensList[tempScreensList.Count - 1];
+
+                tempScreensList.RemoveAt(tempScreensList.Count - 1);
+
+                state.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+
+                if (state.ScreenState == ScreenState.TransitionOn ||
+                    state.ScreenState == ScreenState.Active)
+                {
+                    if(!otherScreenHasFocus)
+                    {
+                        otherScreenHasFocus = true;
+                    }
+
+                    if (!state.IsPopup)
+                        coveredByOtherScreen = true;
+                }
+            }
+
+            if (traceEnabled)
+                TraceScreens();
         }
 
-        public void Update(GameTime gameTime)
+        void TraceScreens()
         {
-            currentState.Update(gameTime);
+            List<string> screenNames = new List<string>();
+
+            foreach (BaseGameState state in states)
+                screenNames.Add(state.GetType().Name);
+
+            Debug.WriteLine(string.Join(", ", screenNames.ToArray()));
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(GameTime gameTime)
         {
-            currentState.Draw(spriteBatch);
+            foreach (BaseGameState state in states)
+            {
+                if (state.ScreenState == ScreenState.Hidden)
+                    continue;
+
+                state.Draw(gameTime);
+            }
+        }
+
+        public void AddState(BaseGameState state)
+        {
+            state.StateManager = this;
+            state.IsExiting = false;
+
+            if(isInitialized)
+            {
+                state.Activate(false);
+            }
+
+            states.Add(state);
+        }
+
+        public void RemoveState(BaseGameState state)
+        {
+            if (isInitialized)
+            {
+                state.Unload();
+            }
+
+            states.Remove(state);
+            tempScreensList.Remove(state);
+        }
+
+        public BaseGameState[] GetStates()
+        {
+            return states.ToArray();
+        }
+
+        public void FadeBackBufferToBlack(float alpha)
+        {
+            spriteBatch.Begin();
+            spriteBatch.Draw(blankTexture, GraphicsDevice.Viewport.Bounds, Color.Black * alpha));
+            spriteBatch.End();
+        }
+
+        public void Deactivate()
+        {
+            // Make a copy of the master screen list
+            tempScreensList.Clear();
+            foreach(BaseGameState state in states)
+            {
+                tempScreensList.Add(state);
+            }
+            foreach(BaseGameState state in states)
+            {
+                state.Deactivate();
+            }
+        }
+
+        public bool Activate(bool instancePreserved)
+        {
+            if(instancePreserved)
+            {
+                tempScreensList.Clear();
+
+                foreach(BaseGameState state in states)
+                {
+                    tempScreensList.Add(state);
+                }
+                foreach(BaseGameState state in states)
+                {
+                    state.Activate(true);
+                }
+            }
+
+            return true;
         }
     }
 }
