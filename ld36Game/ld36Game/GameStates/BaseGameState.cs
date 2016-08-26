@@ -181,7 +181,7 @@ namespace ld36Game.GameStates
         {
             if (TransitionOffTime == TimeSpan.Zero)
             {
-                StateManager.RemoveScreen(this);
+                StateManager.RemoveState(this);
             }
             else
             {

@@ -5,36 +5,55 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ld36Game.GameStates
 {
     public class SplashScreenState : BaseGameState
     {
-        Texture2D splashImage;
-        public string path;
+        ContentManager content;
+        Texture2D backgroundTexture;
 
-        public override void LoadContent()
+        public SplashScreenState()
         {
-            base.LoadContent();
-
-            path = "images/SplashScreen";
-            splashImage = content.Load<Texture2D>(path);
+            TransitionOnTime = TimeSpan.FromSeconds(0.5);
+            TransitionOffTime = TimeSpan.FromSeconds(0.5);
         }
 
-        public override void UnloadContent()
+        public override void Activate(bool instancePreserved)
         {
-            base.UnloadContent();
+            if (!instancePreserved)
+            {
+                if (content == null)
+                    content = new ContentManager(StateManager.Game.Services, "Content");
+
+                backgroundTexture = content.Load<Texture2D>("images/SplashScreen");
+            }
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Unload()
         {
-            base.Update(gameTime);
+            base.Unload();
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            spriteBatch.Draw(splashImage, Vector2.Zero, Color.White);
+            base.Update(gameTime, otherScreenHasFocus, false);
+        }
+
+        public override void Draw(GameTime gameTime)
+        {
+            SpriteBatch spriteBatch = StateManager.SpriteBatch;
+            Viewport viewport = StateManager.GraphicsDevice.Viewport;
+            Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
+
+            spriteBatch.Begin();
+
+            spriteBatch.Draw(backgroundTexture, fullscreen,
+                             new Color(TransitionAlpha, TransitionAlpha, TransitionAlpha));
+
+            spriteBatch.End();
         }
     }
 }

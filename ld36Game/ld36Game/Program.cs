@@ -9,7 +9,7 @@ namespace ld36Game
         [STAThread]
         static void Main()
         {
-            using (var game = new BaseGameState())
+            using (var game = new MainGameState())
                 game.Run();
         }
     }

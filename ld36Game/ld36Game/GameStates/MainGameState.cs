@@ -21,61 +21,38 @@ namespace ld36Game.GameStates
         private SpriteBatch spriteBatch;
         private EntityManager eManager;
         private AssetManager aManager;
+        private StateManager sManager;
 
         public MainGameState()
         {
             graphics = new GraphicsDeviceManager(this);
             eManager = new EntityManager();
             aManager = new AssetManager();
+            sManager = new StateManager(this);
             Content.RootDirectory = "Content";
         }
 
-        protected override void Initialize()
+        private void AddInitialStates()
         {
-            graphics.PreferredBackBufferWidth = (int)StateManager.Instance.Dimensions.X;
-            graphics.PreferredBackBufferHeight = (int)StateManager.Instance.Dimensions.Y;
-
-            graphics.ApplyChanges();
-
-            base.Initialize();
-        }
-
-        /// <summary>Loads the content.</summary>
-        protected override void LoadContent()
-        { 
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            StateManager.Instance.LoadContent(Content);
-        }
-
-        protected override void UnloadContent()
-        {
-            StateManager.Instance.UnloadContent();
-            Content.Unload();
-        }
-
-        /// <summary>Updates the specified game time.</summary>
-        /// <param name="gameTime">The game time.</param>
-        protected override void Update(GameTime gameTime)
-        {
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            StateManager.Instance.Update(gameTime);
-
-            base.Update(gameTime);
+            // Activate the first states
+            sManager.AddState(new SplashScreenState());
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin();
-
-            StateManager.Instance.Draw(spriteBatch);
-
+ 
             base.Draw(gameTime);
+        }
 
-            spriteBatch.End();
+        protected override void Initialize()
+        {
+            graphics.PreferredBackBufferWidth = 640;
+            graphics.PreferredBackBufferHeight = 480;
+
+            graphics.ApplyChanges();
+
+            base.Initialize();
         }
     }
 }

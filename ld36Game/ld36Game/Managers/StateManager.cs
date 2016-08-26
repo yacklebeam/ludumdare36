@@ -181,7 +181,7 @@ namespace ld36Game.Managers
         public void FadeBackBufferToBlack(float alpha)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(blankTexture, GraphicsDevice.Viewport.Bounds, Color.Black * alpha));
+            spriteBatch.Draw(blankTexture, GraphicsDevice.Viewport.Bounds, Color.Black * alpha);
             spriteBatch.End();
         }
 
