@@ -20,8 +20,13 @@ using ld36Game.Managers;
 
 namespace ld36Game.GameStates
 {
-    public class BaseGameState
+    public class BaseGameState : Game
     {
+        GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
+        private EntityManager eManager;
+        private AssetManager aManager;
+
         protected ContentManager content;
 
         public Type Type;
@@ -29,6 +34,10 @@ namespace ld36Game.GameStates
         public BaseGameState()
         {
             Type = this.GetType();
+            graphics = new GraphicsDeviceManager(this);
+            eManager = new EntityManager();
+            aManager = new AssetManager();
+            Content.RootDirectory = "Content";
         }
 
         public virtual void LoadContent()

@@ -22,13 +22,29 @@ namespace ld36Game.Managers
 {
     public class StateManager
     {
-        private static StateManager instance;
+        enum GameStates
+        {
+            State1,
+            State2,
+            State3,
+            State4
+        }
+
+        GameStates gameState;
+
         public Vector2 Dimensions { private set; get; }
         public ContentManager Content { private set; get; }
 
-        BaseGameState currentState, newState;
+        BaseGameState currentState;
         public GraphicsDevice graphicsDevice;
         public SpriteBatch spriteBatch;
+        public SpriteFont spriteFont;
+
+        Color background;
+        String gameStateTitle;
+        Rectangle screen;
+
+        private static StateManager instance;
 
         public static StateManager Instance
         {
@@ -41,23 +57,14 @@ namespace ld36Game.Managers
             }
         }
 
-        public void ChangeStates(string stateName)
-        {
-            newState = (BaseGameState)Activator.CreateInstance(Type.GetType("ld36Game.GameStates." + stateName));
-        }
-
-        void Transition()
-        {
-
-        }
-
         public StateManager()
         {
             Dimensions = new Vector2(640, 480);
-            currentState = new SplashScreenState();
+            gameState = GameStates.State1;
+            gameStateTitle = "State 1";
+            background = Color.Red;
         }
-
-
+        
         public void LoadContent(ContentManager Content)
         {
             this.Content = new ContentManager(Content.ServiceProvider, "Content");
