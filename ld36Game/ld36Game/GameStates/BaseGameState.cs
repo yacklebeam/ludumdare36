@@ -6,27 +6,14 @@
 // </summary>
 //-----------------------------------------------------------------------
 
-using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Input;
-
-using ld36Game.Managers;
 
 namespace ld36Game.GameStates
 {
     public abstract class BaseGameState
     {
-        private GraphicsDeviceManager graphics;
         private Texture2D background;
-        private SpriteBatch spriteBatch;
 
         public bool isInitialized;
         public BaseGameState()
@@ -34,14 +21,7 @@ namespace ld36Game.GameStates
             isInitialized = true;
         }
 
-        protected virtual void Draw(SpriteBatch spriteBatch)
-        {
-            this.spriteBatch = spriteBatch;
-        }
-
-        public virtual void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
+        public abstract void draw(SpriteBatch spriteBatch);
+        public abstract void update(GameTime gameTime);
     }
 }
