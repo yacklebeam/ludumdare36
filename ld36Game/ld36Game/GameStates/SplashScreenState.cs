@@ -7,10 +7,6 @@
 //-----------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -20,6 +16,20 @@ namespace ld36Game.GameStates
 {
     public class SplashScreenState : BaseGameState
     {
-        
+        public override void update(GameTime gameTime)
+        {
+            
+            throw new NotImplementedException();
+        }
+
+        public override void draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Begin();
+            
+
+
+            spriteBatch.End();
+            throw new NotImplementedException();
+        }
     }
 }

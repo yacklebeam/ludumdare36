@@ -59,10 +59,10 @@ namespace ld36Game.GameStates
         /// <param name="spriteBatch">The sprite batch.</param>
         /// <param name="spriteFont">The sprite font.</param>
         /// <param name="menuItems">The menu items.</param>
-        public MainMenuState(Game game,
-                        SpriteBatch spriteBatch,
-                        SpriteFont spriteFont,
-                        string[] menuItems) : base(game)
+        public MainMenuState(SpriteBatch spriteBatch,
+							 SpriteFont spriteFont,
+                             string[] menuItems
+							 )
         {
             this.spriteBatch = spriteBatch;
             this.spriteFont = spriteFont;
@@ -84,8 +84,8 @@ namespace ld36Game.GameStates
             }
 
             position = new Vector2(
-                (Game.Window.ClientBounds.Width - width) / 2,
-                (Game.Window.ClientBounds.Height - height) / 2
+                (BaseGameState.Window.ClientBounds.Width - width) / 2,
+                (BaseGameState.Window.ClientBounds.Height - height) / 2
                 );
         }
 
@@ -105,7 +105,7 @@ namespace ld36Game.GameStates
 
         /// <summary>Updates the specified game time.</summary>
         /// <param name="gameTime">The game time.</param>
-        public override void Update(GameTime gameTime)
+        public override void update(GameTime gameTime)
         {
             keyState = Keyboard.GetState();
 
@@ -121,7 +121,7 @@ namespace ld36Game.GameStates
                 if (selectedIndex < 0)
                     selectedIndex = menuItems.Length - 1;
             }
-            base.Update(gameTime);
+            base.update(gameTime);
 
             oldState = keyState;
         }

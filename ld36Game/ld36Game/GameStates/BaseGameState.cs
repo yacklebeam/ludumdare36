@@ -14,6 +14,7 @@ namespace ld36Game.GameStates
 {
     public abstract class BaseGameState
     {
+        private GraphicsDeviceManager graphics;
         private Texture2D background;
         private StateManager parent;
 
