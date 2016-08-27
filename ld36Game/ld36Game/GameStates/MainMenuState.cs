@@ -35,6 +35,8 @@ namespace ld36Game.GameStates
         SpriteFont normalFont;
         SpriteFont spriteFont;
 
+        public String GameMode;
+
         Vector2 position;
         float width = 0f;
         float height = 0f;
@@ -114,6 +116,15 @@ namespace ld36Game.GameStates
                 if (selectedIndex < 0)
                     selectedIndex = menuItems.Length - 1;
             }
+
+            if (CheckKeys(Keys.Enter))
+            {
+                if (selectedIndex == 0)
+                    parent.setPlayingState();
+                else if (selectedIndex == 1)
+                    parent.game.Exit();
+            }
+
             oldState = keyState;
         }
 
