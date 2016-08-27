@@ -18,9 +18,10 @@ namespace ld36Game.GameStates
     public class MainGameState : Game
     {
         GraphicsDeviceManager graphics;
-        private EntityManager eManager;
-        private AssetManager aManager;
-        private StateManager sManager;
+        public EntityManager eManager;
+        public AssetManager aManager;
+        public StateManager sManager;
+        public LevelManager levelManager;
         SpriteBatch spriteBatch;
 
         public MainGameState()
@@ -28,8 +29,10 @@ namespace ld36Game.GameStates
             graphics = new GraphicsDeviceManager(this);
             eManager = new EntityManager();
             aManager = new AssetManager();
-            Content.RootDirectory = "Content";
+            levelManager = new LevelManager();
             sManager = new StateManager(this);
+
+            Content.RootDirectory = "Content";
 
             //CHANGE THIS TO CHANGE THE STARTING STATE
             sManager.setPlayingState();
@@ -48,6 +51,8 @@ namespace ld36Game.GameStates
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            aManager.loadImageAsset("character-bits", "images/characters", Content);
+            aManager.loadImageAsset("map-tiles", "images/maptiles", Content);
         }
 
         protected override void UnloadContent()
@@ -63,7 +68,7 @@ namespace ld36Game.GameStates
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null);
             sManager.getCurrentState().draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);

@@ -42,9 +42,15 @@
     <Compile Include="GameStates\PlayingState.cs" />
     <Compile Include="GameStates\SplashScreenState.cs" />
     <Compile Include="Managers\AssetManager.cs" />
+    <Compile Include="Managers\CharacterSpriteManager.cs" />
     <Compile Include="Managers\EntityManager.cs" />
+    <Content Include="Data\LudumDareLevel.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="GameStates\MainMenuState.cs.backup" />
     <Compile Include="GameStates\MainGameState.cs" />
+    <Compile Include="Managers\LevelManager.cs" />
+    <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Managers\StateManager.cs" />
     <None Include="Managers\XmlManager.cs.backup" />
     <Compile Include="Program.cs" />

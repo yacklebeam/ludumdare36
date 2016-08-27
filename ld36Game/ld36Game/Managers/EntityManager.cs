@@ -1,12 +1,4 @@
-﻿//-----------------------------------------------------------------------
-// <summary>
-//          Description: Manages the game's entities.
-//          Author: Jacob Troxel
-//          Contributing Authors: Trent Clostio
-// </summary>
-//-----------------------------------------------------------------------
-
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace ld36Game.Managers
@@ -14,20 +6,20 @@ namespace ld36Game.Managers
     //spriteBatch.Draw(<SPRITE>, <POS>, <RECT>, Color.White, <ROTATE>, <ORIGIN>, 1.0f, SpriteEffects.None, 0f);
 
     //Struct to hold entity information -- AS SMALL AS POSSIBLE!!
-    class Entity
+    public class Entity
     {
         public Vector2 position; //POS
         public Vector2 center; //ORIGIN
-        public Vector2 velocity;
+        public int currentMapPathId;
         public double height;
         public double width; //for hitbox
         public float rotationAngle; //ROTATE
         public float rotationOffset; //fuck me
         public string spriteId; //use to get RECT and SPRITE
 
-        public Entity(  Vector2 p,
+        public Entity(Vector2 p,
                         Vector2 c,
-                        Vector2 v,
+                        int path,
                         double h,
                         double w,
                         float r,
@@ -36,16 +28,21 @@ namespace ld36Game.Managers
         {
             position = p;
             center = c;
-            velocity = v;
+            currentMapPathId = path;
             height = h;
             width = w;
             rotationAngle = r;
             spriteId = s;
             rotationOffset = ro;
         }
+
+        public void draw()
+        {
+
+        }
     }
 
-    class EntityManager
+    public class EntityManager
     {
         List<Entity> entities;
 
@@ -61,7 +58,7 @@ namespace ld36Game.Managers
 
         public Entity getEntity(int index)
         {
-            if(index <= entities.Count) return entities[index];
+            if (index <= entities.Count) return entities[index];
             return null;
         }
 
@@ -83,16 +80,15 @@ namespace ld36Game.Managers
             entities[index].rotationAngle = value;
         }
 
-        public void setVelocity(int index, Vector2 vec)
-        {
-            ////LMAO WTF DUDE WHY
-            entities[index].velocity = vec;
-        }
-
         public void setPosition(int index, Vector2 vec)
         {
             ////NAH MAN THIS HAS GOTTA STOP
             entities[index].position = vec;
+        }
+
+        public void setCurrentPathId(int index, int path)
+        {
+            entities[index].currentMapPathId = path;
         }
     }
 }

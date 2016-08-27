@@ -25,17 +25,17 @@ namespace ld36Game.Managers
     public class StateManager
     {
         private BaseGameState currentState;
-        private MainGameState game;
+        public MainGameState game;
 
         private SplashScreenState splashScreenState;
         private PlayingState playingState;
 
         public StateManager(MainGameState parent)
         {
+            game = parent;
+
             splashScreenState = new SplashScreenState(this);
             playingState = new PlayingState(this);
-
-            game = parent;
             currentState = playingState;
         } 
 
