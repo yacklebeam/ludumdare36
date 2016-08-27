@@ -23,6 +23,7 @@ namespace ld36Game.GameStates
         public AssetManager aManager;
         public StateManager sManager;
         public LevelManager levelManager;
+        public Color mouseColor;
         SpriteBatch spriteBatch;
 
         public MainGameState()
@@ -74,12 +75,15 @@ namespace ld36Game.GameStates
             base.Update(gameTime);
         }
 
+        public void setMouseColor(Color c)
+        {
+            mouseColor = c;
+        }
+
         protected override void Draw(GameTime gameTime)
         {
             MouseState ms = Mouse.GetState();
-            Color mouseColor;
-            if (ms.LeftButton == ButtonState.Pressed) mouseColor = Color.LightPink;
-            else mouseColor = Color.White;
+            mouseColor = Color.White;
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null);
             sManager.getCurrentState().draw(spriteBatch);
