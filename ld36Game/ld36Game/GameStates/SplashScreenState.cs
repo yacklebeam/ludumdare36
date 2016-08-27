@@ -18,7 +18,6 @@ namespace ld36Game.GameStates
     {
         public override void update(GameTime gameTime)
         {
-            
             throw new NotImplementedException();
         }
 
@@ -26,8 +25,6 @@ namespace ld36Game.GameStates
         {
             spriteBatch.Begin();
             
-
-
             spriteBatch.End();
             throw new NotImplementedException();
         }

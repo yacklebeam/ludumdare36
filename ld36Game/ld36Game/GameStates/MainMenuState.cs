@@ -7,12 +7,7 @@
 //-----------------------------------------------------------------------
 
 using System;
-using System.IO;
-using System.Linq;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -22,11 +17,16 @@ namespace ld36Game.GameStates
 {
     public class MainMenuState : BaseGameState
     {
-        string[] menuItems;
+        string[] menuItems = new string[2] {
+            "Play Game",
+            "Exit Game"
+        };
+
         int selectedIndex;
 
         Color normal = Color.White;
         Color hlight = Color.Yellow;
+        Color background = Color.Bisque;
 
         KeyboardState keyState;
         KeyboardState oldState;
@@ -54,22 +54,6 @@ namespace ld36Game.GameStates
             }
         }
 
-        /// <summary>Initializes a new instance of the <see cref="MainMenuState"/> class.</summary>
-        /// <param name="game">The game.</param>
-        /// <param name="spriteBatch">The sprite batch.</param>
-        /// <param name="spriteFont">The sprite font.</param>
-        /// <param name="menuItems">The menu items.</param>
-        public MainMenuState(SpriteBatch spriteBatch,
-							 SpriteFont spriteFont,
-                             string[] menuItems
-							 )
-        {
-            this.spriteBatch = spriteBatch;
-            this.spriteFont = spriteFont;
-            this.menuItems = menuItems;
-            MeasureMenu();
-        }
-
         /// <summary>Measures the menu for indexing.</summary>
         private void MeasureMenu()
         {
@@ -84,14 +68,9 @@ namespace ld36Game.GameStates
             }
 
             position = new Vector2(
-                (BaseGameState.Window.ClientBounds.Width - width) / 2,
-                (BaseGameState.Window.ClientBounds.Height - height) / 2
+                    (BaseGameState.Window.ClientBounds.Width - width) / 2,
+                    (BaseGameState.Window.ClientBounds.Height - height) / 2
                 );
-        }
-
-        public override void Initialize()
-        {
-            base.Initialize();
         }
 
         /// <summary>Checks the keys.</summary>
@@ -134,9 +113,9 @@ namespace ld36Game.GameStates
 
         /// <summary>Draws the specified game time.</summary>
         /// <param name="gameTime">The game time.</param>
-        public override void Draw(GameTime gameTime)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(gameTime);
+            BaseGameState.draw(spriteBatch);
 
             Vector2 location = position;
             Color tint;
