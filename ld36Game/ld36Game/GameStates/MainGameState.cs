@@ -31,16 +31,10 @@ namespace ld36Game.GameStates
             Content.RootDirectory = "Content";
         }
 
-        private void AddInitialStates()
-        {
-            // Activate the first states
-            sManager.AddState(new SplashScreenState());
-        }
-
         protected override void Initialize()
         {
-            graphics.PreferredBackBufferWidth = 640;
-            graphics.PreferredBackBufferHeight = 480;
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 600;
 
             graphics.ApplyChanges();
 
@@ -49,23 +43,24 @@ namespace ld36Game.GameStates
 
         protected override void LoadContent()
         {
-            sManager.LoadContent(new SplashScreenState());
         }
 
         protected override void UnloadContent()
         {
-            sManager.UnloadContent(new SplashScreenState());
         }
 
         protected override void Update(GameTime gameTime)
         {
+            //sManger.getCurrentState().update(gameTime);
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            //spriteBatch.Begin();
+            //sManger.getCurrentState().draw(spriteBatch);
+            //spriteBatch.End();
             base.Draw(gameTime);
         }
     }
