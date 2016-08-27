@@ -36,7 +36,7 @@ namespace ld36Game.Managers
 
             mainMenuState = new MainMenuState(this);
             playingState = new PlayingState(this);
-            currentState = playingState;
+            currentState = mainMenuState;
         } 
 
         public BaseGameState getCurrentState()
@@ -46,7 +46,7 @@ namespace ld36Game.Managers
 
         public void setPlayingState()
         {
-            currentState = playingState;
+            currentState = mainMenuState;
         }
     }
 }

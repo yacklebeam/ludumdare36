@@ -10,8 +10,6 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Storage;
 
 using ld36Game.Managers;
 
@@ -24,8 +22,6 @@ namespace ld36Game.GameStates
             "Exit Game"
         };
 
-        MainGameState mainGameState = new MainGameState();
-
         int selectedIndex;
 
         Color normal = Color.White;
@@ -34,12 +30,10 @@ namespace ld36Game.GameStates
 
         KeyboardState keyState;
         KeyboardState oldState;
-
-        SpriteBatch spriteBatch;
-        SpriteFont spriteFont;
+        AssetManager aManager;
 
         private const string TITLE = "SPEAR CHUCKERS";
-        private SpriteFont titleFont;
+        public SpriteFont spriteFont;
 
         Vector2 position;
         float width = 0f;
@@ -47,7 +41,7 @@ namespace ld36Game.GameStates
 
         public MainMenuState(StateManager p) : base(p)
         {
-            
+            aManager = parent.game.aManager;
         }
 
         public int SelectedIndex
@@ -77,8 +71,8 @@ namespace ld36Game.GameStates
             }
 
             position = new Vector2(
-                    (mainGameState.Window.ClientBounds.Width - width) / 2,
-                    (mainGameState.Window.ClientBounds.Height - height) / 2
+                    (parent.game.Window.ClientBounds.Width - width) / 2,
+                    (parent.game.Window.ClientBounds.Height - height) / 2
                 );
         }
 
@@ -116,6 +110,8 @@ namespace ld36Game.GameStates
         {
             Vector2 location = position;
             Color tint;
+
+            spriteFont = aManager.loadFontAsset("menu-font", "fonts/MenuFont", );
 
             for (int i = 0; i < menuItems.Length; i++)
             {

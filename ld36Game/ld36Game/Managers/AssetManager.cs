@@ -31,6 +31,16 @@ namespace ld36Game.Managers
                 textures.Add(imageId, newTexture);
             }
         }
+
+        public void loadFontAsset(string fontId, string fontPath, ContentManager content)
+        {
+            if (!fonts.ContainsKey(fontId))
+            {
+                SpriteFont newFont = content.Load<SpriteFont>(fontPath);
+                fonts.Add(fontId, newFont);
+            }
+        }
+
         public Texture2D getTexture(string textureId)
         {
             return textures[textureId];

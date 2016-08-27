@@ -12,7 +12,7 @@ namespace ld36Game.GameStates
 {
     class PlayingState : BaseGameState
     {
-        EntityManager eManager;
+        EntityManager eManager;  
         LevelManager levelManager;
         AssetManager aManager;
 
