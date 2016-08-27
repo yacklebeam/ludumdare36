@@ -48,7 +48,9 @@ namespace ld36Game.GameStates
                 if (ms.X > xPos && ms.X < xPos + 32 && ms.Y > yPos && ms.Y < yPos + 32 && ms.LeftButton == ButtonState.Pressed)
                 {
                     if (testMap[i] >= 3 && testMap[i] <= 11) tileColor = Color.LightPink;
-                    else tileColor = Color.LightPink;
+                    else tileColor = Color.LightBlue;
+
+                    parent.game.setMouseColor(tileColor);
                 }
                 else tileColor = Color.White;
 
