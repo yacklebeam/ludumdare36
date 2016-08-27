@@ -18,7 +18,6 @@ namespace ld36Game.GameStates
     public class MainGameState : Game
     {
         GraphicsDeviceManager graphics;
-        private SpriteBatch spriteBatch;
         private EntityManager eManager;
         private AssetManager aManager;
         private StateManager sManager;
@@ -38,13 +37,6 @@ namespace ld36Game.GameStates
             sManager.AddState(new SplashScreenState());
         }
 
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
- 
-            base.Draw(gameTime);
-        }
-
         protected override void Initialize()
         {
             graphics.PreferredBackBufferWidth = 640;
@@ -53,6 +45,28 @@ namespace ld36Game.GameStates
             graphics.ApplyChanges();
 
             base.Initialize();
+        }
+
+        protected override void LoadContent()
+        {
+            sManager.LoadContent(new SplashScreenState());
+        }
+
+        protected override void UnloadContent()
+        {
+            sManager.UnloadContent(new SplashScreenState());
+        }
+
+        protected override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+        }
+
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            base.Draw(gameTime);
         }
     }
 }

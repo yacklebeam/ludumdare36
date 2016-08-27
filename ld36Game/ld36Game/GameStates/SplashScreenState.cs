@@ -1,4 +1,12 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <summary>
+//          Description: Renders the shitty splash screen.
+//          Author: Trent Clostio
+//          Contributing Authors: Jacob Troxel
+// </summary>
+//-----------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,13 +31,10 @@ namespace ld36Game.GameStates
 
         public override void Activate(bool instancePreserved)
         {
-            if (!instancePreserved)
-            {
-                if (content == null)
-                    content = new ContentManager(StateManager.Game.Services, "Content");
+            if (content == null)
+                content = new ContentManager(StateManager.Game.Services, "Content");
 
-                backgroundTexture = content.Load<Texture2D>("images/SplashScreen");
-            }
+            backgroundTexture = content.Load<Texture2D>("images/SplashScreen");
         }
 
         public override void Unload()
