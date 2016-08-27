@@ -82,6 +82,18 @@ namespace ld36Game.GameStates
                 drawTexture(spriteBatch, "character-bits", new Vector2(ms.X-16, ms.Y-16), 0.0f, Vector2.Zero, CharacterSpriteManager.getBody(0), 2.0f, parent.game.getMouseColor());
             }
 
+            for (int i = 0; i < tManager.getTowerCount(); ++i)
+            {
+                Tower t = tManager.getTower(i);
+                drawTexture(spriteBatch, "character-bits", t.position, 0.0f, new Vector2(0.0f, 8.0f), CharacterSpriteManager.getBody(0), 2.0f, Color.White);
+            }
+
+            for (int i = 0; i < tManager.getBulletCount(); ++i)
+            {
+                Bullet t = tManager.getBullet(i);
+                drawTexture(spriteBatch, "character-bits", t.position, 0.0f, new Vector2(8.0f, 8.0f), CharacterSpriteManager.getBody(0), 2.0f, Color.White);
+            }
+
             for (int i = eManager.getCount()-1; i >= 0;  --i)
             {
                 Entity e = eManager.getEntity(i);
@@ -96,18 +108,6 @@ namespace ld36Game.GameStates
                     if (e.spriteIndexes[4] >= 0) drawTexture(spriteBatch, e.spriteId, e.position, adjustedAngle, e.center, CharacterSpriteManager.getWeapon(e.spriteIndexes[4]), 2.0f, Color.White);
                     if (e.spriteIndexes[5] >= 0) drawTexture(spriteBatch, e.spriteId, e.position, adjustedAngle, e.center, CharacterSpriteManager.getShield(e.spriteIndexes[5]), 2.0f, Color.White);
                 }
-            }
-
-            for(int i = 0; i < tManager.getTowerCount(); ++i)
-            {
-                Tower t = tManager.getTower(i);
-                drawTexture(spriteBatch, "character-bits", t.position, 0.0f, Vector2.Zero, CharacterSpriteManager.getBody(0), 2.0f, Color.White);
-            }
-
-            for(int i = 0; i < tManager.getBulletCount(); ++i)
-            {
-                Bullet t = tManager.getBullet(i);
-                drawTexture(spriteBatch, "character-bits", t.position, 0.0f, new Vector2(8.0f, 8.0f), CharacterSpriteManager.getBody(0), 2.0f, Color.White);
             }
         }
 
