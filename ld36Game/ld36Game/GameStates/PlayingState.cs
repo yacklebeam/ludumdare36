@@ -92,50 +92,9 @@ namespace ld36Game.GameStates
 
         public override void update(GameTime gameTime)
         {
-            double t = gameTime.ElapsedGameTime.TotalMilliseconds;
-
             if (Keyboard.GetState().IsKeyDown(Keys.Escape)) parent.game.Exit();
 
-            //update entity along path
-            /////ENTITY MOVEMENT/UPDATE CODE
-            float entitySpeed = 150.0f;
-            float distanceToMove =  entitySpeed * (float)t / 1000.0f;
-            //float distanceToMove = 2.0f;
-            Entity e = eManager.getEntity(0);
-            int targetTile = levelManager.getDestTile(e.currentMapPathId);
-            Vector2 targetPosition = new Vector2((targetTile % 20) * 32 + 16, (targetTile / 20) * 32 + 16);
-            targetPosition -= e.position;
-            float length = targetPosition.Length();
-
-            while (length <= distanceToMove)
-            {
-                if (levelManager.isEndPoint(e.currentMapPathId))
-                {
-                    //entity should die!
-                    int spawnTileId = levelManager.getSpawnPoint();
-                    int startingPath = levelManager.getPathIdFromStart(spawnTileId);
-                    Vector2 spawnPosition = new Vector2((spawnTileId % 20) * 32 + 16, (spawnTileId / 20) * 32 + 16);
-                    eManager.setPosition(0, spawnPosition);
-                    eManager.setCurrentPathId(0, startingPath);
-                    break;
-                }
-
-                eManager.setPosition(0, e.position + targetPosition);
-                int newPathId = levelManager.getPathIdFromStart(targetTile);
-                eManager.setCurrentPathId(0, newPathId);
-                distanceToMove -= length;
-
-                e = eManager.getEntity(0);
-                targetTile = levelManager.getDestTile(e.currentMapPathId);
-                targetPosition = new Vector2((targetTile % 20) * 32 + 16, (targetTile / 20) * 32 + 16);
-                targetPosition -= e.position;
-                length = targetPosition.Length();
-            }
-
-            Vector2 normalisedSpeedV = targetPosition * distanceToMove / length;
-            Vector2 newPosition = e.position + normalisedSpeedV;
-            eManager.setPosition(0, newPosition);
-            ///////END ENTITY UPDATE CODE
+            parent.game.eManager.update(gameTime, parent.game.levelManager);
         }
     }
 }

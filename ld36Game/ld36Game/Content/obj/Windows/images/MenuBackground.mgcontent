@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>K:/ludumdare36/ld36Game/ld36Game/Content/images/MenuBackground.png</SourceFile>
-  <SourceTime>2016-08-27T09:34:02.988363-07:00</SourceTime>
+  <SourceTime>2016-08-27T09:39:52.1583344-07:00</SourceTime>
   <DestFile>K:/ludumdare36/ld36Game/ld36Game/Content/bin/Windows/images/MenuBackground.xnb</DestFile>
-  <DestTime>2016-08-27T09:37:53.5935529-07:00</DestTime>
+  <DestTime>2016-08-27T09:39:58.3896908-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-29T23:36:08-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

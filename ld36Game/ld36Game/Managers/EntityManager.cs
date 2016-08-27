@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
 namespace ld36Game.Managers
@@ -89,6 +90,55 @@ namespace ld36Game.Managers
         public void setCurrentPathId(int index, int path)
         {
             entities[index].currentMapPathId = path;
+        }
+
+        public void update(GameTime time, LevelManager levelManager)
+        {
+            for(int i = 0; i < entities.Count; ++i)
+            {
+                double t = time.ElapsedGameTime.TotalMilliseconds;
+
+                //update entity along path
+                /////ENTITY MOVEMENT/UPDATE CODE
+                float entitySpeed = 150.0f;
+                float distanceToMove = entitySpeed * (float)t / 1000.0f;
+                //float distanceToMove = 2.0f;
+                Entity e = entities[i];
+                int targetTile = levelManager.getDestTile(e.currentMapPathId);
+                Vector2 targetPosition = new Vector2((targetTile % 20) * 32 + 16, (targetTile / 20) * 32 + 16);
+                targetPosition -= e.position;
+                float length = targetPosition.Length();
+
+                while (length <= distanceToMove)
+                {
+                    if (levelManager.isEndPoint(e.currentMapPathId))
+                    {
+                        //entity should die!
+                        int spawnTileId = levelManager.getSpawnPoint();
+                        int startingPath = levelManager.getPathIdFromStart(spawnTileId);
+                        Vector2 spawnPosition = new Vector2((spawnTileId % 20) * 32 + 16, (spawnTileId / 20) * 32 + 16);
+                        setPosition(i, spawnPosition);
+                        setCurrentPathId(i, startingPath);
+                        break;
+                    }
+
+                    setPosition(i, e.position + targetPosition);
+                    int newPathId = levelManager.getPathIdFromStart(targetTile);
+                    setCurrentPathId(i, newPathId);
+                    distanceToMove -= length;
+
+                    e = getEntity(i);
+                    targetTile = levelManager.getDestTile(e.currentMapPathId);
+                    targetPosition = new Vector2((targetTile % 20) * 32 + 16, (targetTile / 20) * 32 + 16);
+                    targetPosition -= e.position;
+                    length = targetPosition.Length();
+                }
+
+                Vector2 normalisedSpeedV = targetPosition * distanceToMove / length;
+                Vector2 newPosition = e.position + normalisedSpeedV;
+                setPosition(i, newPosition);
+                ///////END ENTITY UPDATE CODE
+            }
         }
     }
 }

@@ -23,6 +23,7 @@ namespace ld36Game.Managers
 
         int[] mapTiles;
         List<Path> mapPaths;
+        List<string> spawnList;
 
         const int mapWidth = 20;
         const int mapHeight = 15;
@@ -30,6 +31,7 @@ namespace ld36Game.Managers
         public LevelManager()
         {
             mapPaths = new List<Path>();
+            spawnList = new List<string>();
 
             mapTiles = new int[mapWidth * mapHeight];
             for(int i = 0; i < mapWidth * mapHeight; ++i)
@@ -76,6 +78,11 @@ namespace ld36Game.Managers
             else return false;
         }
 
+        public List<string> getSpawnList()
+        {
+            return spawnList;
+        }
+
         public void loadLevel(string levelFileName)
         {
             string mapFileAsString = "";
@@ -113,7 +120,7 @@ namespace ld36Game.Managers
             }
 
             //process the map string
-            if(mapFileAsString != "")
+            if (mapFileAsString != "")
             {
                 int index = 0;
                 for(int i = 0; i < mapFileAsString.Length; i+=2)
@@ -125,7 +132,7 @@ namespace ld36Game.Managers
             }
 
             //process path string
-            if(pathsAsString != "")
+            if (pathsAsString != "")
             {
                 int count = 0;
                 while(count < pathsAsString.Length)
@@ -146,6 +153,23 @@ namespace ld36Game.Managers
                     {
                         //oops, don't have 8 chars
                     }
+                }
+            }
+
+            //process enemy string
+            if (spawnListAsString != "")
+            {
+                string tickTime = spawnListAsString.Substring(0, 3);
+                spawnList.Add(tickTime);
+                for (int i = 3; i < spawnListAsString.Length; ++i)
+                {
+                    string ent = spawnListAsString.Substring(i, 1);
+                    if(ent == "0")
+                    {
+                        //this is a timer block
+                        ent = spawnListAsString.Substring(i, 4);
+                    }
+                    spawnList.Add(ent);
                 }
             }
         }
