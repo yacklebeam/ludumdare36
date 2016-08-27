@@ -48,5 +48,10 @@ namespace ld36Game.Managers
         {
             currentState = playingState;
         }
+
+        public void setMainMenuState()
+        {
+            currentState = mainMenuState;
+        }
     }
 }
