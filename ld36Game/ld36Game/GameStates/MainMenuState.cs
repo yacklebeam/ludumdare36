@@ -26,13 +26,11 @@ namespace ld36Game.GameStates
 
         Color normal = Color.White;
         Color hlight = Color.Yellow;
-        Color background = Color.Bisque;
 
         KeyboardState keyState;
         KeyboardState oldState;
         AssetManager aManager;
-
-        public SpriteFont spriteFont;
+        SpriteFont spriteFont;
 
         Vector2 position;
         float width = 0f;
@@ -57,22 +55,33 @@ namespace ld36Game.GameStates
         }
 
         /// <summary>Measures the menu for indexing.</summary>
-        private void MeasureMenu()
+        private Vector2 MeasureMenu()
         {
             height = 0;
             width = 0;
+            Vector2 size = new Vector2();
+
             foreach (string item in menuItems)
             {
-                Vector2 size = spriteFont.MeasureString(item);
-                if (size.X > width)
-                    width = size.X;
-                height += spriteFont.LineSpacing + 5;
+                try
+                {
+                    size = spriteFont.MeasureString(item);
+                    if (size.X > width)
+                        width = size.X;
+                    height += spriteFont.LineSpacing + 5;
+                }
+                catch
+                {
+                    new ArgumentNullException();
+                }
             }
 
             position = new Vector2(
-                    (parent.game.Window.ClientBounds.Width - width) / 2,
-                    (parent.game.Window.ClientBounds.Height - height) / 2
+                    (800 - width) / 2,
+                    (600 - height) / 2
                 );
+
+            return position;
         }
 
         /// <summary>Checks the keys.</summary>
@@ -107,9 +116,11 @@ namespace ld36Game.GameStates
 
         public override void draw(SpriteBatch spriteBatch)
         {
-            Vector2 location = position;
+            Vector2 location = MeasureMenu();
             Color tint;
 
+            spriteBatch.Draw(aManager.getTexture("menu-background"), new Rectangle(0, 0, 800, 600), Color.White);
+            
             spriteFont = aManager.getFont("menu-fonts");
 
             for (int i = 0; i < menuItems.Length; i++)
