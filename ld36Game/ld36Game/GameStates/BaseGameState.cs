@@ -6,6 +6,7 @@
 // </summary>
 //-----------------------------------------------------------------------
 
+using ld36Game.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -14,11 +15,13 @@ namespace ld36Game.GameStates
     public abstract class BaseGameState
     {
         private Texture2D background;
+        private StateManager parent;
 
         public bool isInitialized;
-        public BaseGameState()
+        public BaseGameState(StateManager p)
         {
             isInitialized = true;
+            parent = p;
         }
 
         public abstract void draw(SpriteBatch spriteBatch);
