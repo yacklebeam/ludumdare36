@@ -51,7 +51,6 @@
     <Compile Include="Managers\LevelManager.cs" />
     <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Managers\StateManager.cs" />
-    <None Include="Managers\XmlManager.cs.backup" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
