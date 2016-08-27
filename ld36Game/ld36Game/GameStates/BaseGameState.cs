@@ -22,7 +22,7 @@ using ld36Game.Managers;
 
 namespace ld36Game.GameStates
 {
-    public abstract class BaseGameState : Game
+    public abstract class BaseGameState
     {
         private GraphicsDeviceManager graphics;
         private Texture2D background;
