@@ -89,3 +89,4 @@ K:\ludumdare36\ld36Game\ld36Game\SharpDX.Direct3D9.xml
 K:\ludumdare36\ld36Game\ld36Game\Data\LudumDareLevel.dat
 K:\ludumdare36\ld36Game\ld36Game\Content\images\characters.xnb
 K:\ludumdare36\ld36Game\ld36Game\Content\images\maptiles.xnb
+K:\ludumdare36\ld36Game\ld36Game\Content\images\cursor-normal.xnb
