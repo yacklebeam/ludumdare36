@@ -131,9 +131,14 @@ namespace ld36Game.Managers
                     if (t.cooldown <= 0)
                     {
                         //get target, and fire
-                        Bullet b = new Bullet(t.position + new Vector2(16, 16), new Vector2(10.0f, 0), 1);
-                        bullets.Add(b);
-                        towers[i].cooldown = t.fireRate;
+
+                        Vector2 vel = getTargetFromEnemies(t.range, t.position);
+                        if(vel != Vector2.Zero)
+                        {
+                            Bullet b = new Bullet(t.position + new Vector2(16, 16), vel * 10.0f, 1);
+                            bullets.Add(b);
+                            towers[i].cooldown = t.fireRate;
+                        }
                     }
                     towers[i].cooldown -= time.ElapsedGameTime.Milliseconds;
 
@@ -165,6 +170,24 @@ namespace ld36Game.Managers
                     }
                 }
             }
+        }
+
+        private Vector2 getTargetFromEnemies(float range, Vector2 position)
+        {
+            for(int i = 0; i < parent.eManager.getCount(); ++i)
+            {
+                Entity e = parent.eManager.getEntity(i);
+                if (e == null) continue;
+                Vector2 distanceVec = e.position - position;
+                float distance = distanceVec.Length();
+
+                if(distance <= range) //this is our target
+                {
+                    distanceVec.Normalize();
+                    return distanceVec;
+                }
+            }
+            return Vector2.Zero;
         }
 
         private Vector2 tilePosFromMouse(MouseState ms)
