@@ -22,8 +22,26 @@ using ld36Game.Managers;
 
 namespace ld36Game.GameStates
 {
-    public abstract class BaseGameState
+    public abstract class BaseGameState : Game
     {
-        
+        private GraphicsDeviceManager graphics;
+        private Texture2D background;
+        private SpriteBatch spriteBatch;
+
+        public bool isInitialized;
+        public BaseGameState()
+        {
+            isInitialized = true;
+        }
+
+        protected virtual void Draw(SpriteBatch spriteBatch)
+        {
+            this.spriteBatch = spriteBatch;
+        }
+
+        public virtual void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+        }
     }
 }

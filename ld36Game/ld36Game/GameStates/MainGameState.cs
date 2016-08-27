@@ -27,7 +27,6 @@ namespace ld36Game.GameStates
             graphics = new GraphicsDeviceManager(this);
             eManager = new EntityManager();
             aManager = new AssetManager();
-            sManager = new StateManager(this);
             Content.RootDirectory = "Content";
         }
 
