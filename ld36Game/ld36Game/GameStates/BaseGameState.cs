@@ -16,7 +16,7 @@ namespace ld36Game.GameStates
     {
         private GraphicsDeviceManager graphics;
         private Texture2D background;
-        private StateManager parent;
+        protected StateManager parent;
 
         public bool isInitialized;
         public BaseGameState(StateManager p)

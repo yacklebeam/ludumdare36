@@ -36,9 +36,7 @@ F:\projects\ludumdare36\ld36Game\ld36Game\obj\x86\Debug\ld36Game.pdb
 F:\projects\ludumdare36\ld36Game\ld36Game\obj\x86\Debug\ld36Game.csprojResolveAssemblyReference.cache
 F:\projects\ludumdare36\ld36Game\ld36Game\Content\fonts\MenuFont.xnb
 F:\projects\ludumdare36\ld36Game\ld36Game\Content\fonts\TitleFont.xnb
-F:\projects\ludumdare36\ld36Game\ld36Game\Content\images\enemy-texture.xnb
 F:\projects\ludumdare36\ld36Game\ld36Game\Content\images\SplashScreen.xnb
-F:\projects\ludumdare36\ld36Game\ld36Game\Content\images\test-texture.xnb
 F:\projects\ludumdare36\ld36Game\ld36Game\ld36Game.exe
 F:\projects\ludumdare36\ld36Game\ld36Game\ld36Game.pdb
 F:\projects\ludumdare36\ld36Game\ld36Game\MonoGame.Framework.dll
@@ -63,9 +61,7 @@ F:\projects\ludumdare36\ld36Game\ld36Game\SharpDX.RawInput.xml
 F:\projects\ludumdare36\ld36Game\ld36Game\SharpDX.Direct3D9.xml
 K:\ludumdare36\ld36Game\ld36Game\Content\fonts\MenuFont.xnb
 K:\ludumdare36\ld36Game\ld36Game\Content\fonts\TitleFont.xnb
-K:\ludumdare36\ld36Game\ld36Game\Content\images\enemy-texture.xnb
 K:\ludumdare36\ld36Game\ld36Game\Content\images\SplashScreen.xnb
-K:\ludumdare36\ld36Game\ld36Game\Content\images\test-texture.xnb
 K:\ludumdare36\ld36Game\ld36Game\ld36Game.exe
 K:\ludumdare36\ld36Game\ld36Game\ld36Game.pdb
 K:\ludumdare36\ld36Game\ld36Game\MonoGame.Framework.dll
@@ -88,3 +84,9 @@ K:\ludumdare36\ld36Game\ld36Game\SharpDX.Direct2D1.xml
 K:\ludumdare36\ld36Game\ld36Game\SharpDX.XInput.xml
 K:\ludumdare36\ld36Game\ld36Game\SharpDX.RawInput.xml
 K:\ludumdare36\ld36Game\ld36Game\SharpDX.Direct3D9.xml
+K:\ludumdare36\ld36Game\ld36Game\Data\LudumDareLevel.dat
+K:\ludumdare36\ld36Game\ld36Game\Content\images\characters.xnb
+K:\ludumdare36\ld36Game\ld36Game\Content\images\maptiles.xnb
+F:\projects\ludumdare36\ld36Game\ld36Game\Content\images\characters.xnb
+F:\projects\ludumdare36\ld36Game\ld36Game\Content\images\maptiles.xnb
+F:\projects\ludumdare36\ld36Game\ld36Game\Data\LudumDareLevel.dat

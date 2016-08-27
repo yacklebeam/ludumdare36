@@ -18,16 +18,24 @@ namespace ld36Game.GameStates
     public class MainGameState : Game
     {
         GraphicsDeviceManager graphics;
-        private EntityManager eManager;
-        private AssetManager aManager;
-        private StateManager sManager;
+        public EntityManager eManager;
+        public AssetManager aManager;
+        public StateManager sManager;
+        public LevelManager levelManager;
+        SpriteBatch spriteBatch;
 
         public MainGameState()
         {
             graphics = new GraphicsDeviceManager(this);
             eManager = new EntityManager();
             aManager = new AssetManager();
+            levelManager = new LevelManager();
+            sManager = new StateManager(this);
+
             Content.RootDirectory = "Content";
+
+            //CHANGE THIS TO CHANGE THE STARTING STATE
+            sManager.setPlayingState();
         }
 
         protected override void Initialize()
@@ -42,6 +50,9 @@ namespace ld36Game.GameStates
 
         protected override void LoadContent()
         {
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            aManager.loadImageAsset("character-bits", "images/characters", Content);
+            aManager.loadImageAsset("map-tiles", "images/maptiles", Content);
         }
 
         protected override void UnloadContent()
@@ -50,16 +61,16 @@ namespace ld36Game.GameStates
 
         protected override void Update(GameTime gameTime)
         {
-            //sManger.getCurrentState().update(gameTime);
+            sManager.getCurrentState().update(gameTime);
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            //spriteBatch.Begin();
-            //sManger.getCurrentState().draw(spriteBatch);
-            //spriteBatch.End();
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null);
+            sManager.getCurrentState().draw(spriteBatch);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

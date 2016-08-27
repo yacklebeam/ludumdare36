@@ -13,6 +13,8 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Storage;
 
+using ld36Game.Managers;
+
 namespace ld36Game.GameStates
 {
     public class MainMenuState : BaseGameState
@@ -21,6 +23,8 @@ namespace ld36Game.GameStates
             "Play Game",
             "Exit Game"
         };
+
+        MainGameState mainGameState = new MainGameState();
 
         int selectedIndex;
 
@@ -40,6 +44,11 @@ namespace ld36Game.GameStates
         Vector2 position;
         float width = 0f;
         float height = 0f;
+
+        public MainMenuState(StateManager p) : base(p)
+        {
+            
+        }
 
         public int SelectedIndex
         {
@@ -68,8 +77,8 @@ namespace ld36Game.GameStates
             }
 
             position = new Vector2(
-                    (BaseGameState.Window.ClientBounds.Width - width) / 2,
-                    (BaseGameState.Window.ClientBounds.Height - height) / 2
+                    (mainGameState.Window.ClientBounds.Width - width) / 2,
+                    (mainGameState.Window.ClientBounds.Height - height) / 2
                 );
         }
 
@@ -88,7 +97,7 @@ namespace ld36Game.GameStates
         {
             keyState = Keyboard.GetState();
 
-            if(CheckKeys(Keys.Down))
+            if (CheckKeys(Keys.Down))
             {
                 selectedIndex++;
                 if (selectedIndex == menuItems.Length)
@@ -100,23 +109,11 @@ namespace ld36Game.GameStates
                 if (selectedIndex < 0)
                     selectedIndex = menuItems.Length - 1;
             }
-            base.update(gameTime);
-
             oldState = keyState;
         }
 
-        /// <summary>Is a piece of shit that doesn't work.</summary>
-        //protected override void LoadContent()
-        //{
-        //    titleFont = Content.Load<SpriteFont>("fonts/TitleFont");
-        //}
-
-        /// <summary>Draws the specified game time.</summary>
-        /// <param name="gameTime">The game time.</param>
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void draw(SpriteBatch spriteBatch)
         {
-            BaseGameState.draw(spriteBatch);
-
             Vector2 location = position;
             Color tint;
 
@@ -134,8 +131,6 @@ namespace ld36Game.GameStates
 
                 location.Y += spriteFont.LineSpacing + 5;
             }
-
-            spriteBatch.DrawString(spriteFont, TITLE, new Vector2(100, 25), Color.Orange);
         }
     }
 }

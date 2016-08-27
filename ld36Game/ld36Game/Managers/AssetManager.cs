@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace ld36Game.Managers
 {
-    class AssetManager
+    public class AssetManager
     {
         Dictionary<string, Texture2D> textures;
         Dictionary<string, SpriteFont> fonts;
