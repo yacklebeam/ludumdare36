@@ -34,6 +34,10 @@ namespace ld36Game.GameStates
 
         public override void draw(SpriteBatch spriteBatch)
         {
+            MouseState ms = Mouse.GetState();
+            Color tileColor = Color.White;
+            //if (ms.LeftButton == ButtonState.Pressed) tileColor = Color.LightPink;
+
             for (int i = 0; i < MapManager.getTileCount(); ++i)//this should switch to the level loader???
             {
                 int xPos = (i % 20) * 32;
@@ -41,15 +45,22 @@ namespace ld36Game.GameStates
 
                 int[] testMap = levelManager.getMap();
 
+                if (ms.X > xPos && ms.X < xPos + 32 && ms.Y > yPos && ms.Y < yPos + 32 && ms.LeftButton == ButtonState.Pressed)
+                {
+                    if (testMap[i] >= 3 && testMap[i] <= 11) tileColor = Color.LightPink;
+                    else tileColor = Color.LightPink;
+                }
+                else tileColor = Color.White;
+
                 //draw all the grass
                 int j = i / 20;
-                if ((i + j) % 2 == 0) spriteBatch.Draw(aManager.getTexture("map-tiles"), new Vector2(xPos, yPos), MapManager.getTile(0), Color.White, 0.0f, new Vector2(), 2.0f, SpriteEffects.None, 0.0f);
-                else spriteBatch.Draw(aManager.getTexture("map-tiles"), new Vector2(xPos, yPos), MapManager.getTile(1), Color.White, 0.0f, new Vector2(), 2.0f, SpriteEffects.None, 0.0f);
+                if ((i + j) % 2 == 0) spriteBatch.Draw(aManager.getTexture("map-tiles"), new Vector2(xPos, yPos), MapManager.getTile(0), tileColor, 0.0f, new Vector2(), 2.0f, SpriteEffects.None, 0.0f);
+                else spriteBatch.Draw(aManager.getTexture("map-tiles"), new Vector2(xPos, yPos), MapManager.getTile(1), tileColor, 0.0f, new Vector2(), 2.0f, SpriteEffects.None, 0.0f);
 
                 //draw roads from the map above
                 if (testMap[i] > 1) //not a grass tile
                 {
-                    spriteBatch.Draw(aManager.getTexture("map-tiles"), new Vector2(xPos, yPos), MapManager.getTile(testMap[i]), Color.White, 0.0f, new Vector2(), 2.0f, SpriteEffects.None, 0.0f);
+                    spriteBatch.Draw(aManager.getTexture("map-tiles"), new Vector2(xPos, yPos), MapManager.getTile(testMap[i]), tileColor, 0.0f, new Vector2(), 2.0f, SpriteEffects.None, 0.0f);
                 }
             }
 
