@@ -46,6 +46,9 @@ namespace ld36Game.GameStates
         public MainMenuState(StateManager p) : base(p)
         {
             aManager = parent.game.aManager;
+
+            introTheme = aManager.getSound("intro-theme");
+            introTheme.Play();
         }
 
         public int SelectedIndex
@@ -136,9 +139,6 @@ namespace ld36Game.GameStates
             Color tint;
 
             spriteBatch.Draw(aManager.getTexture("menu-background"), new Rectangle(0, 0, 800, 600), Color.White);
-
-            introTheme = aManager.getSound("intro-sound");
-            introTheme.Play();
             
             normalFont = aManager.getFont("menu-font");
             hlightFont = aManager.getFont("menu-font-hlight");

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace ld36Game.Managers
 {
@@ -89,6 +90,25 @@ namespace ld36Game.Managers
 
             Rectangle Result = new Rectangle(startX, startY, 16, 16);
             return Result;
+        }
+
+        public static int[] getSpriteList(int id)
+        {
+            Random rnd = new Random();
+            int skinColor = rnd.Next(0, 3);
+            int skinIndex = skinColor * 2;
+
+            if (id == 1) return new int[] { skinIndex, 65, 2, -1, -1, -1, 100, 1};
+            if (id == 2) return new int[] { skinIndex, 101, 2, -1, 74, -1, 150, 1 };
+            if (id == 3) return new int[] { skinIndex, 12, -1, -1, 32, -1, 200, 1 };
+            if (id == 4) return new int[] { skinIndex, 39, 12, 24, 21, 48, 150, 2 };
+            if (id == 5) return new int[] { skinIndex, 55, 2, -1, 74, 1, 150, 2 };
+            if (id == 6) return new int[] { skinIndex, 55, 2, -1, 7, -1, 100, 1 };
+            if (id == 7) return new int[] { skinIndex, 54, 4, 0, 74, 45, 150, 4 };
+            if (id == 8) return new int[] { skinIndex, 72, -1, -1, 98, 48, 200, 5 };
+            if (id == 9) return new int[] { skinIndex, 118, 4, 26, 74, 8, 150, 5 };
+            if (id == 10) return new int[] { skinIndex, 118, 0, -1, 76, 21, 100, 10 };
+            return new int[] { skinIndex, -1, -1, -1, -1, -1 };
         }
     }
 }

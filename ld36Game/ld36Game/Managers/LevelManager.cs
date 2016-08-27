@@ -23,6 +23,10 @@ namespace ld36Game.Managers
 
         int[] mapTiles;
         List<Path> mapPaths;
+        List<string> spawnList;
+
+        int[] choices;
+        int spawns;
 
         const int mapWidth = 20;
         const int mapHeight = 15;
@@ -30,11 +34,16 @@ namespace ld36Game.Managers
         public LevelManager()
         {
             mapPaths = new List<Path>();
+            spawnList = new List<string>();
+
+            spawns = 0;
+            choices = new int[mapWidth * mapHeight];
 
             mapTiles = new int[mapWidth * mapHeight];
             for(int i = 0; i < mapWidth * mapHeight; ++i)
             {
                 mapTiles[i] = 0;
+                choices[i] = 0;
             }
         }
 
@@ -56,7 +65,11 @@ namespace ld36Game.Managers
                 if (mapPaths[i].start == startTile) possiblePathIds.Add(i);
             }
 
-            return possiblePathIds[0];
+            int currentPathChoice = choices[startTile];
+            choices[startTile]++;
+            if (choices[startTile] >= possiblePathIds.Count) choices[startTile] = 0;
+
+            return possiblePathIds[currentPathChoice];
         }
 
         public int getSpawnPoint()
@@ -74,6 +87,11 @@ namespace ld36Game.Managers
         {
             if (mapPaths[id].type == 255 /*FF*/ || mapPaths[id].type == 175 /*AF*/) return true;
             else return false;
+        }
+
+        public List<string> getSpawnList()
+        {
+            return spawnList;
         }
 
         public void loadLevel(string levelFileName)
@@ -113,7 +131,7 @@ namespace ld36Game.Managers
             }
 
             //process the map string
-            if(mapFileAsString != "")
+            if (mapFileAsString != "")
             {
                 int index = 0;
                 for(int i = 0; i < mapFileAsString.Length; i+=2)
@@ -125,7 +143,7 @@ namespace ld36Game.Managers
             }
 
             //process path string
-            if(pathsAsString != "")
+            if (pathsAsString != "")
             {
                 int count = 0;
                 while(count < pathsAsString.Length)
@@ -146,6 +164,28 @@ namespace ld36Game.Managers
                     {
                         //oops, don't have 8 chars
                     }
+                }
+            }
+
+            //process enemy string
+            if (spawnListAsString != "")
+            {
+                string tickTime = spawnListAsString.Substring(0, 3);
+                spawnList.Add(tickTime);
+                for (int i = 3; i < spawnListAsString.Length; ++i)
+                {
+                    string ent = spawnListAsString.Substring(i, 1);
+                    if(ent == "0")
+                    {
+                        string numBlanks = spawnListAsString.Substring(i+1,3);
+                        int numBlanksAsInt = Convert.ToInt32(numBlanks, 16);
+                        for(int k = 0; k < numBlanksAsInt; ++k)
+                        {
+                            spawnList.Add(ent);
+                        }
+                        i += 3;
+                    }
+                    spawnList.Add(ent);
                 }
             }
         }
