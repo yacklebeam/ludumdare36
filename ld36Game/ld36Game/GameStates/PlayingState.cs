@@ -72,11 +72,15 @@ namespace ld36Game.GameStates
 
         public override void update(GameTime gameTime)
         {
+            double t = gameTime.ElapsedGameTime.TotalMilliseconds;
+
             if (Keyboard.GetState().IsKeyDown(Keys.Escape)) parent.game.Exit();
 
             //update entity along path
             /////ENTITY MOVEMENT/UPDATE CODE
-            float distanceToMove = 2.0f;
+            float entitySpeed = 150.0f;
+            float distanceToMove =  entitySpeed * (float)t / 1000.0f;
+            //float distanceToMove = 2.0f;
             Entity e = eManager.getEntity(0);
             int targetTile = levelManager.getDestTile(e.currentMapPathId);
             Vector2 targetPosition = new Vector2((targetTile % 20) * 32 + 16, (targetTile / 20) * 32 + 16);
