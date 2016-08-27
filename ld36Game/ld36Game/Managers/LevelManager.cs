@@ -25,6 +25,9 @@ namespace ld36Game.Managers
         List<Path> mapPaths;
         List<string> spawnList;
 
+        int[] choices;
+        int spawns;
+
         const int mapWidth = 20;
         const int mapHeight = 15;
 
@@ -33,10 +36,14 @@ namespace ld36Game.Managers
             mapPaths = new List<Path>();
             spawnList = new List<string>();
 
+            spawns = 0;
+            choices = new int[mapWidth * mapHeight];
+
             mapTiles = new int[mapWidth * mapHeight];
             for(int i = 0; i < mapWidth * mapHeight; ++i)
             {
                 mapTiles[i] = 0;
+                choices[i] = 0;
             }
         }
 
@@ -58,7 +65,11 @@ namespace ld36Game.Managers
                 if (mapPaths[i].start == startTile) possiblePathIds.Add(i);
             }
 
-            return possiblePathIds[0];
+            int currentPathChoice = choices[startTile];
+            choices[startTile]++;
+            if (choices[startTile] >= possiblePathIds.Count) choices[startTile] = 0;
+
+            return possiblePathIds[currentPathChoice];
         }
 
         public int getSpawnPoint()
@@ -166,8 +177,13 @@ namespace ld36Game.Managers
                     string ent = spawnListAsString.Substring(i, 1);
                     if(ent == "0")
                     {
-                        //this is a timer block
-                        ent = spawnListAsString.Substring(i, 4);
+                        string numBlanks = spawnListAsString.Substring(i+1,3);
+                        int numBlanksAsInt = Convert.ToInt32(numBlanks, 16);
+                        for(int k = 0; k < numBlanksAsInt; ++k)
+                        {
+                            spawnList.Add(ent);
+                        }
+                        i += 3;
                     }
                     spawnList.Add(ent);
                 }

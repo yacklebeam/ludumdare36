@@ -51,6 +51,7 @@
     <Compile Include="Managers\LevelManager.cs" />
     <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Managers\StateManager.cs" />
+    <Compile Include="Managers\TowerManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

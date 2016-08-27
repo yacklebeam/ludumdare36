@@ -22,21 +22,18 @@ namespace ld36Game.GameStates
         EntityManager eManager;  
         LevelManager levelManager;
         AssetManager aManager;
+        TowerManager tManager;
+        KeyboardState oldState;
 
         public PlayingState(StateManager p) : base(p)
         {
             eManager = parent.game.eManager;
             levelManager = parent.game.levelManager;
             aManager = parent.game.aManager;
+            tManager = parent.game.tManager;
 
             levelManager.loadLevel("LudumDareLevel.dat");
-
-            //move to level loader??????
-            int spawnTileId = levelManager.getSpawnPoint();
-            int startingPath = levelManager.getPathIdFromStart(spawnTileId);
-            Vector2 spawnPosition = new Vector2((spawnTileId % 20) * 32 + 16, (spawnTileId / 20) * 32 + 16);
-            Entity player = new Entity(spawnPosition, new Vector2(8, 16), startingPath, 16, 16, 0.0f, 0.0f, "character-bits");
-            eManager.addEntity(player);
+            eManager.prepLevel();
         }
 
         public override void draw(SpriteBatch spriteBatch)
@@ -45,6 +42,13 @@ namespace ld36Game.GameStates
             Color tileColor = Color.White;
             //if (ms.LeftButton == ButtonState.Pressed) tileColor = Color.LightPink;
 
+            for (int j = 0; j < tManager.getTowerTypeCount(); ++j)
+            {
+                Vector2 pos = new Vector2(700.0f, 100.0f + j * 100.0f);
+                if(eManager.isPaused()) drawTexture(spriteBatch, "character-bits", pos, 0.0f, Vector2.Zero, CharacterSpriteManager.getBody(0), 4.0f, Color.White);
+                else drawTexture(spriteBatch, "character-bits", pos, 0.0f, Vector2.Zero, CharacterSpriteManager.getBody(4), 4.0f, Color.White);
+            }
+
             for (int i = 0; i < MapManager.getTileCount(); ++i)//this should switch to the level loader???
             {
                 int xPos = (i % 20) * 32;
@@ -52,7 +56,7 @@ namespace ld36Game.GameStates
 
                 int[] testMap = levelManager.getMap();
 
-                if (ms.X > xPos && ms.X < xPos + 32 && ms.Y > yPos && ms.Y < yPos + 32 && ms.LeftButton == ButtonState.Pressed)
+                if (ms.X >= xPos && ms.X < xPos + 32 && ms.Y >= yPos && ms.Y < yPos + 32 && ms.LeftButton == ButtonState.Pressed)
                 {
                     if (testMap[i] >= 3 && testMap[i] <= 11) tileColor = Color.LightPink;
                     else tileColor = Color.LightBlue;
@@ -73,28 +77,47 @@ namespace ld36Game.GameStates
                 }
             }
 
-            for (int i = 0; i < eManager.getCount(); ++i)
+            if (tManager.getSelectedTowerType() >= 0)
+            {
+                drawTexture(spriteBatch, "character-bits", new Vector2(ms.X-16, ms.Y-16), 0.0f, Vector2.Zero, CharacterSpriteManager.getBody(0), 2.0f, parent.game.getMouseColor());
+            }
+
+            for (int i = eManager.getCount()-1; i >= 0;  --i)
             {
                 Entity e = eManager.getEntity(i);
-                if (!e.Equals(null))
+                if (e != null)
                 {
                     float adjustedAngle = e.rotationAngle + e.rotationOffset;
 
-                    spriteBatch.Draw(aManager.getTexture(e.spriteId), e.position, CharacterSpriteManager.getBody(0), Color.White, adjustedAngle, e.center, 2.0f, SpriteEffects.None, 0.0f);
-                    spriteBatch.Draw(aManager.getTexture(e.spriteId), e.position, CharacterSpriteManager.getShield(0), Color.White, adjustedAngle, e.center, 2.0f, SpriteEffects.None, 0.0f);
-                    spriteBatch.Draw(aManager.getTexture(e.spriteId), e.position, CharacterSpriteManager.getShirt(0), Color.White, adjustedAngle, e.center, 2.0f, SpriteEffects.None, 0.0f);
-                    spriteBatch.Draw(aManager.getTexture(e.spriteId), e.position, CharacterSpriteManager.getPants(0), Color.White, adjustedAngle, e.center, 2.0f, SpriteEffects.None, 0.0f);
-                    spriteBatch.Draw(aManager.getTexture(e.spriteId), e.position, CharacterSpriteManager.getHeadpiece(0), Color.White, adjustedAngle, e.center, 2.0f, SpriteEffects.None, 0.0f);
-                    spriteBatch.Draw(aManager.getTexture(e.spriteId), e.position, CharacterSpriteManager.getWeapon(0), Color.White, adjustedAngle, e.center, 2.0f, SpriteEffects.None, 0.0f);
+                    if (e.spriteIndexes[0] >= 0) drawTexture(spriteBatch, e.spriteId, e.position, adjustedAngle, e.center, CharacterSpriteManager.getBody(e.spriteIndexes[0]), 2.0f, Color.White);
+                    if (e.spriteIndexes[2] >= 0) drawTexture(spriteBatch, e.spriteId, e.position, adjustedAngle, e.center, CharacterSpriteManager.getPants(e.spriteIndexes[2]), 2.0f, Color.White);
+                    if (e.spriteIndexes[1] >= 0) drawTexture(spriteBatch, e.spriteId, e.position, adjustedAngle, e.center, CharacterSpriteManager.getShirt(e.spriteIndexes[1]), 2.0f, Color.White);
+                    if (e.spriteIndexes[3] >= 0) drawTexture(spriteBatch, e.spriteId, e.position, adjustedAngle, e.center, CharacterSpriteManager.getHeadpiece(e.spriteIndexes[3]), 2.0f, Color.White);
+                    if (e.spriteIndexes[4] >= 0) drawTexture(spriteBatch, e.spriteId, e.position, adjustedAngle, e.center, CharacterSpriteManager.getWeapon(e.spriteIndexes[4]), 2.0f, Color.White);
+                    if (e.spriteIndexes[5] >= 0) drawTexture(spriteBatch, e.spriteId, e.position, adjustedAngle, e.center, CharacterSpriteManager.getShield(e.spriteIndexes[5]), 2.0f, Color.White);
                 }
             }
+
+            for(int i = 0; i < tManager.getTowerCount(); ++i)
+            {
+                Tower t = tManager.getTower(i);
+                drawTexture(spriteBatch, "character-bits", t.position, 0.0f, Vector2.Zero, CharacterSpriteManager.getBody(0), 2.0f, Color.White);
+            }
+        }
+
+        private void drawTexture(SpriteBatch spriteBatch, string id, Vector2 position, float adjustedAngle, Vector2 center, Rectangle rect, float scale, Color color)
+        {
+            spriteBatch.Draw(aManager.getTexture(id), position, rect, color, adjustedAngle, center, scale, SpriteEffects.None, 0.0f);
         }
 
         public override void update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape)) parent.game.Exit();
-
-            parent.game.eManager.update(gameTime, parent.game.levelManager);
+            KeyboardState kState = Keyboard.GetState();
+            if (kState.IsKeyDown(Keys.Escape)) parent.game.Exit();
+            if (kState.IsKeyDown(Keys.P) && oldState.IsKeyUp(Keys.P)) eManager.togglePaused();
+            eManager.update(gameTime, parent.game.levelManager);
+            tManager.update();
+            oldState = kState;
         }
     }
 }

@@ -24,14 +24,16 @@ namespace ld36Game.GameStates
         public StateManager sManager;
         public LevelManager levelManager;
         public Color mouseColor;
+        public TowerManager tManager;
         SpriteBatch spriteBatch;
 
         public MainGameState()
         {
             graphics = new GraphicsDeviceManager(this);
-            eManager = new EntityManager();
+            eManager = new EntityManager(this);
             aManager = new AssetManager();
             levelManager = new LevelManager();
+            tManager = new TowerManager();
             sManager = new StateManager(this);
 
             Content.RootDirectory = "Content";
@@ -80,6 +82,11 @@ namespace ld36Game.GameStates
         public void setMouseColor(Color c)
         {
             mouseColor = c;
+        }
+
+        public Color getMouseColor()
+        {
+            return mouseColor;
         }
 
         protected override void Draw(GameTime gameTime)
