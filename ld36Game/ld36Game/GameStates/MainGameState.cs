@@ -50,7 +50,7 @@ namespace ld36Game.GameStates
 
         protected override void Update(GameTime gameTime)
         {
-            //sManger.getCurrentState().update(gameTime);
+            sManager.getCurrentState().update(gameTime);
             base.Update(gameTime);
         }
 
@@ -58,7 +58,7 @@ namespace ld36Game.GameStates
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             //spriteBatch.Begin();
-            //sManger.getCurrentState().draw(spriteBatch);
+            //sManager.getCurrentState().draw(spriteBatch);
             //spriteBatch.End();
             base.Draw(gameTime);
         }
