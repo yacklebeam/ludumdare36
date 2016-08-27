@@ -1,32 +1,36 @@
 ﻿//-----------------------------------------------------------------------
 // <summary>
-//          Description: Helper for generating the game's main menu
+//          Description: Helper for generating the game's main menu.
 //          Author: Trent Clostio
 //          Contributing Authors: Jacob Troxel
 // </summary>
 //-----------------------------------------------------------------------
 
 using System;
-using System.IO;
-using System.Linq;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Storage;
 
+using ld36Game.Managers;
+
 namespace ld36Game.GameStates
 {
-    public class MenuState : Microsoft.Xna.Framework.DrawableGameComponent
+    public class MainMenuState : BaseGameState
     {
-        string[] menuItems;
+        string[] menuItems = new string[2] {
+            "Play Game",
+            "Exit Game"
+        };
+
+        MainGameState mainGameState = new MainGameState();
+
         int selectedIndex;
 
         Color normal = Color.White;
         Color hlight = Color.Yellow;
+        Color background = Color.Bisque;
 
         KeyboardState keyState;
         KeyboardState oldState;
@@ -34,9 +38,17 @@ namespace ld36Game.GameStates
         SpriteBatch spriteBatch;
         SpriteFont spriteFont;
 
+        private const string TITLE = "SPEAR CHUCKERS";
+        private SpriteFont titleFont;
+
         Vector2 position;
         float width = 0f;
         float height = 0f;
+
+        public MainMenuState(StateManager p) : base(p)
+        {
+            
+        }
 
         public int SelectedIndex
         {
@@ -49,22 +61,6 @@ namespace ld36Game.GameStates
                 if (selectedIndex >= menuItems.Length)
                     selectedIndex = menuItems.Length - 1;
             }
-        }
-
-        /// <summary>Initializes a new instance of the <see cref="MenuState"/> class.</summary>
-        /// <param name="game">The game.</param>
-        /// <param name="spriteBatch">The sprite batch.</param>
-        /// <param name="spriteFont">The sprite font.</param>
-        /// <param name="menuItems">The menu items.</param>
-        public MenuState(Game game,
-                        SpriteBatch spriteBatch,
-                        SpriteFont spriteFont,
-                        string[] menuItems) : base(game)
-        {
-            this.spriteBatch = spriteBatch;
-            this.spriteFont = spriteFont;
-            this.menuItems = menuItems;
-            MeasureMenu();
         }
 
         /// <summary>Measures the menu for indexing.</summary>
@@ -81,14 +77,9 @@ namespace ld36Game.GameStates
             }
 
             position = new Vector2(
-                (Game.Window.ClientBounds.Width - width) / 2,
-                (Game.Window.ClientBounds.Height - height) / 2
+                    (mainGameState.Window.ClientBounds.Width - width) / 2,
+                    (mainGameState.Window.ClientBounds.Height - height) / 2
                 );
-        }
-
-        public override void Initialize()
-        {
-            base.Initialize();
         }
 
         /// <summary>Checks the keys.</summary>
@@ -102,11 +93,11 @@ namespace ld36Game.GameStates
 
         /// <summary>Updates the specified game time.</summary>
         /// <param name="gameTime">The game time.</param>
-        public override void Update(GameTime gameTime)
+        public override void update(GameTime gameTime)
         {
             keyState = Keyboard.GetState();
 
-            if(CheckKeys(Keys.Down))
+            if (CheckKeys(Keys.Down))
             {
                 selectedIndex++;
                 if (selectedIndex == menuItems.Length)
@@ -118,17 +109,11 @@ namespace ld36Game.GameStates
                 if (selectedIndex < 0)
                     selectedIndex = menuItems.Length - 1;
             }
-            base.Update(gameTime);
-
             oldState = keyState;
         }
 
-        /// <summary>Draws the specified game time.</summary>
-        /// <param name="gameTime">The game time.</param>
-        public override void Draw(GameTime gameTime)
+        public override void draw(SpriteBatch spriteBatch)
         {
-            base.Draw(gameTime);
-
             Vector2 location = position;
             Color tint;
 

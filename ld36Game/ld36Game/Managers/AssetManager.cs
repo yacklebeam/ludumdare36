@@ -1,10 +1,18 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿//-----------------------------------------------------------------------
+// <summary>
+//          Description: Manages the game's assets.
+//          Author: Jacob Troxel
+//          Contributing Authors: Trent Clostio
+// </summary>
+//-----------------------------------------------------------------------
+
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 
-namespace ld36Game
+namespace ld36Game.Managers
 {
-    class AssetManager
+    public class AssetManager
     {
         Dictionary<string, Texture2D> textures;
         Dictionary<string, SpriteFont> fonts;

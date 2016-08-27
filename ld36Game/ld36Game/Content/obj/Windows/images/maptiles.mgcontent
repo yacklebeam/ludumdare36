@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/trent.clostio/projects/ludumdare36/ld36Game/ld36Game/Content/images/enemy-texture.png</SourceFile>
-  <SourceTime>2016-08-24T09:28:54.6449806-07:00</SourceTime>
-  <DestFile>C:/Users/trent.clostio/projects/ludumdare36/ld36Game/ld36Game/Content/bin/Windows/images/enemy-texture.xnb</DestFile>
-  <DestTime>2016-08-24T09:38:04.8659663-07:00</DestTime>
+  <SourceFile>F:/projects/ludumdare36/ld36Game/ld36Game/Content/images/maptiles.png</SourceFile>
+  <SourceTime>2016-08-26T20:08:25.0414025-07:00</SourceTime>
+  <DestFile>F:/projects/ludumdare36/ld36Game/ld36Game/Content/bin/Windows/images/maptiles.xnb</DestFile>
+  <DestTime>2016-08-26T20:14:48.2393912-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-29T23:36:08-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
