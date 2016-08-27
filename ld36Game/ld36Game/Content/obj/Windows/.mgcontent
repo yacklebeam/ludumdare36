@@ -4,11 +4,22 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+<<<<<<< HEAD
     <File>K:/ludumdare36/ld36Game/ld36Game/Content/fonts/MenuFont.spritefont</File>
     <File>K:/ludumdare36/ld36Game/ld36Game/Content/fonts/TitleFont.spritefont</File>
     <File>K:/ludumdare36/ld36Game/ld36Game/Content/images/SplashScreen.jpg</File>
     <File>K:/ludumdare36/ld36Game/ld36Game/Content/images/characters.png</File>
     <File>K:/ludumdare36/ld36Game/ld36Game/Content/images/maptiles.png</File>
     <File>K:/ludumdare36/ld36Game/ld36Game/Content/images/cursor-normal.png</File>
+=======
+    <File>F:/projects/ludumdare36/ld36Game/ld36Game/Content/fonts/MenuFont.spritefont</File>
+    <File>F:/projects/ludumdare36/ld36Game/ld36Game/Content/fonts/TitleFont.spritefont</File>
+    <File>F:/projects/ludumdare36/ld36Game/ld36Game/Content/images/characters.png</File>
+    <File>F:/projects/ludumdare36/ld36Game/ld36Game/Content/images/maptiles.png</File>
+    <File>F:/projects/ludumdare36/ld36Game/ld36Game/Content/images/cursor-normal.png</File>
+    <File>F:/projects/ludumdare36/ld36Game/ld36Game/Content/fonts/MenuFontHlight.spritefont</File>
+    <File>F:/projects/ludumdare36/ld36Game/ld36Game/Content/../../../../../pictures/MenuBackground.png</File>
+    <File>F:/projects/ludumdare36/ld36Game/ld36Game/Content/images/MenuBackground.png</File>
+>>>>>>> 5ad0dbcfa6eb05da4b4b630f8d06452fc83f4bbb
   </SourceFiles>
 </SourceFileCollection>

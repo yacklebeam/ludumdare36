@@ -60,7 +60,9 @@ namespace ld36Game.GameStates
             spriteBatch = new SpriteBatch(GraphicsDevice);
             aManager.loadImageAsset("character-bits", "images/characters", Content);
             aManager.loadImageAsset("map-tiles", "images/maptiles", Content);
-            aManager.loadFontAsset("menu-fonts", "fonts/MenuFont", Content);
+            aManager.loadImageAsset("menu-background", "images/MenuBackground", Content);
+            aManager.loadFontAsset("menu-font", "fonts/MenuFont", Content);
+            aManager.loadFontAsset("menu-font-hlight", "fonts/MenuFontHlight", Content);
             aManager.loadImageAsset("normal-cursor", "images/cursor-normal", Content);
         }
 
