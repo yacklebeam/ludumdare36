@@ -1,4 +1,8 @@
 ld36Game/.vs
-ld36Game/.vshost
-ld36Game/.exe
+ld36Game/*.vshost
+ld36Game/*.exe
 ld36Game/ld36Game/bin
+ld36Game/ld36Game/*.dll
+ld36Game/ld36Game/*.xml
+ld36Game/ld36Game/*.pdb
+ld36Game/ld36Game/*.exe
