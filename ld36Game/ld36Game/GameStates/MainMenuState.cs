@@ -30,6 +30,9 @@ namespace ld36Game.GameStates
         KeyboardState keyState;
         KeyboardState oldState;
         AssetManager aManager;
+
+        SpriteFont hlightFont;
+        SpriteFont normalFont;
         SpriteFont spriteFont;
 
         Vector2 position;
@@ -121,14 +124,21 @@ namespace ld36Game.GameStates
 
             spriteBatch.Draw(aManager.getTexture("menu-background"), new Rectangle(0, 0, 800, 600), Color.White);
             
-            spriteFont = aManager.getFont("menu-fonts");
+            normalFont = aManager.getFont("menu-font");
+            hlightFont = aManager.getFont("menu-font-hlight");
 
             for (int i = 0; i < menuItems.Length; i++)
             {
                 if (i == selectedIndex)
+                {
                     tint = hlight;
+                    spriteFont = hlightFont;
+                }
                 else
+                {
                     tint = normal;
+                    spriteFont = normalFont;
+                }
 
                 spriteBatch.DrawString(spriteFont,
                                        menuItems[i],

@@ -1,8 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/////////////////////////////////////////
+//                                     // 
+//  "lol why do u have so many unused  //
+//    references that's dum."          //
+//          -JT                        //
+/////////////////////////////////////////
+using System;                          //
+using System.Collections.Generic;      //
+using System.Linq;                     // <------------ @_@ [ofug]
+using System.Text;                     //
+using System.Threading.Tasks;          //
+//-------------------------------------//
 using ld36Game.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

@@ -85,3 +85,9 @@
 /processorParam:TextureFormat=Color
 /build:images/MenuBackground.png
 
+#begin fonts/MenuFontHlight.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:fonts/MenuFontHlight.spritefont
+
