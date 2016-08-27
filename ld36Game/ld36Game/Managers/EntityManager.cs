@@ -159,6 +159,11 @@ namespace ld36Game.Managers
             spawnIndex = 1;
         }
 
+        public void kill(int i)
+        {
+            entities[i] = null;
+        }
+
         public void update(GameTime time, LevelManager levelManager)
         {
             if (paused) return;

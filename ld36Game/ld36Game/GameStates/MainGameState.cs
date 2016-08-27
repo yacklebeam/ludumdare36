@@ -59,7 +59,7 @@ namespace ld36Game.GameStates
             eManager = new EntityManager(this);
             aManager = new AssetManager();
             levelManager = new LevelManager();
-            tManager = new TowerManager();
+            tManager = new TowerManager(this);
             sManager = new StateManager(this);
 
             Content.RootDirectory = "Content";
