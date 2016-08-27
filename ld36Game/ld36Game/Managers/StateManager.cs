@@ -24,6 +24,25 @@ namespace ld36Game.Managers
 {
     public class StateManager
     {
-        public SplashScreenState splashScreenState; 
+        private BaseGameState currentState;
+
+        private SplashScreenState splashScreenState;
+
+        public StateManager()
+        {
+            splashScreenState = new SplashScreenState();
+
+            currentState = splashScreenState;
+        } 
+
+        public BaseGameState getCurrentState()
+        {
+            return currentState;
+        }
+
+        public void setSplashState()
+        {
+            currentState = splashScreenState;
+        }
     }
 }
