@@ -9,6 +9,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Audio;
 
 namespace ld36Game.Managers
 {
@@ -16,11 +17,13 @@ namespace ld36Game.Managers
     {
         Dictionary<string, Texture2D> textures;
         Dictionary<string, SpriteFont> fonts;
+        Dictionary<string, SoundEffect> sounds;
 
         public AssetManager()
         {
             textures = new Dictionary<string, Texture2D>();
             fonts = new Dictionary<string, SpriteFont>();
+            sounds = new Dictionary<string, SoundEffect>();
         }
 
         public void loadImageAsset(string imageId, string imagePath, ContentManager content)
@@ -41,6 +44,15 @@ namespace ld36Game.Managers
             }
         }
 
+        public void loadSoundAsset(string soundId, string soundPath, ContentManager content)
+        {
+            if(!sounds.ContainsKey(soundId))
+            {
+                SoundEffect newSound = content.Load<SoundEffect>(soundPath);
+                sounds.Add(soundId, newSound);
+            }
+        }
+
         public Texture2D getTexture(string textureId)
         {
             return textures[textureId];
@@ -49,6 +61,11 @@ namespace ld36Game.Managers
         public SpriteFont getFont(string fontId)
         {
             return fonts[fontId];
+        }
+
+        public SoundEffect getSound(string soundId)
+        {
+            return sounds[soundId];
         }
     }
 }

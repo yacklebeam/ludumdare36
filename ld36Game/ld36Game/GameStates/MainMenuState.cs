@@ -10,6 +10,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 
 using ld36Game.Managers;
 
@@ -34,6 +35,7 @@ namespace ld36Game.GameStates
         SpriteFont hlightFont;
         SpriteFont normalFont;
         SpriteFont spriteFont;
+        SoundEffect introTheme;
 
         public String GameMode;
 
@@ -134,6 +136,9 @@ namespace ld36Game.GameStates
             Color tint;
 
             spriteBatch.Draw(aManager.getTexture("menu-background"), new Rectangle(0, 0, 800, 600), Color.White);
+
+            introTheme = aManager.getSound("intro-sound");
+            introTheme.Play();
             
             normalFont = aManager.getFont("menu-font");
             hlightFont = aManager.getFont("menu-font-hlight");
