@@ -28,13 +28,15 @@ namespace ld36Game.Managers
         private MainGameState game;
 
         private SplashScreenState splashScreenState;
+        private PlayingState playingState;
 
         public StateManager(MainGameState parent)
         {
-            splashScreenState = new SplashScreenState();
+            splashScreenState = new SplashScreenState(this);
+            playingState = new PlayingState(this);
 
             game = parent;
-            currentState = splashScreenState;
+            currentState = playingState;
         } 
 
         public BaseGameState getCurrentState()
@@ -45,6 +47,11 @@ namespace ld36Game.Managers
         public void setSplashState()
         {
             currentState = splashScreenState;
+        }
+
+        public void setPlayingState()
+        {
+            currentState = playingState;
         }
     }
 }
