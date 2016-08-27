@@ -8,3 +8,4 @@ ld36Game/ld36Game/*.pdb
 ld36Game/ld36Game/*.exe
 ld36Game/ld36Game/obj
 *.manifest
+*.mgcontent
