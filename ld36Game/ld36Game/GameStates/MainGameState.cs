@@ -37,7 +37,7 @@ namespace ld36Game.GameStates
             Content.RootDirectory = "Content";
 
             //CHANGE THIS TO CHANGE THE STARTING STATE
-            sManager.setPlayingState();
+            sManager.setMainMenuState();
         }
 
         protected override void Initialize()
