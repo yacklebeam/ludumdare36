@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>K:/ludumdare36/ld36Game/ld36Game/Content/images/cursor-normal.png</SourceFile>
-  <SourceTime>2016-08-26T20:47:34.9799994-07:00</SourceTime>
+  <SourceTime>2016-08-26T20:51:11.7944005-07:00</SourceTime>
   <DestFile>K:/ludumdare36/ld36Game/ld36Game/Content/bin/Windows/images/cursor-normal.xnb</DestFile>
-  <DestTime>2016-08-26T20:47:39.1792396-07:00</DestTime>
+  <DestTime>2016-08-26T20:51:22.1859949-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-29T23:36:08-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 
 using ld36Game.Managers;
+using Microsoft.Xna.Framework.Content;
 
 namespace ld36Game.GameStates
 {
@@ -48,11 +49,17 @@ namespace ld36Game.GameStates
             base.Initialize();
         }
 
+        public ContentManager getContent()
+        {
+            return Content;
+        }
+
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             aManager.loadImageAsset("character-bits", "images/characters", Content);
             aManager.loadImageAsset("map-tiles", "images/maptiles", Content);
+            aManager.loadImageAsset("normal-cursor", "images/cursor-normal", Content);
         }
 
         protected override void UnloadContent()
@@ -67,9 +74,14 @@ namespace ld36Game.GameStates
 
         protected override void Draw(GameTime gameTime)
         {
+            MouseState ms = Mouse.GetState();
+            Color mouseColor;
+            if (ms.LeftButton == ButtonState.Pressed) mouseColor = Color.LightPink;
+            else mouseColor = Color.White;
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null);
             sManager.getCurrentState().draw(spriteBatch);
+            spriteBatch.Draw(aManager.getTexture("normal-cursor"), new Vector2(ms.X, ms.Y), mouseColor);
             spriteBatch.End();
             base.Draw(gameTime);
         }
