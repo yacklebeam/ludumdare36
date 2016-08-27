@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<<<<<<< HEAD
   <SourceFile>F:/projects/ludumdare36/ld36Game/ld36Game/Content/images/characters.png</SourceFile>
   <SourceTime>2016-08-26T20:36:34.2401873-07:00</SourceTime>
   <DestFile>F:/projects/ludumdare36/ld36Game/ld36Game/Content/bin/Windows/images/characters.xnb</DestFile>
-  <DestTime>2016-08-26T20:39:23.939124-07:00</DestTime>
-=======
-  <SourceFile>K:/ludumdare36/ld36Game/ld36Game/Content/images/characters.png</SourceFile>
-  <SourceTime>2016-08-26T20:42:14.2126526-07:00</SourceTime>
-  <DestFile>K:/ludumdare36/ld36Game/ld36Game/Content/bin/Windows/images/characters.xnb</DestFile>
-  <DestTime>2016-08-26T20:51:22.1779944-07:00</DestTime>
->>>>>>> f2b6a42dc8d36d1455399be925dfbd2681dbec4d
+  <DestTime>2016-08-26T21:38:12.3194343-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-29T23:36:08-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -45,5 +45,10 @@ namespace ld36Game.Managers
         {
             return textures[textureId];
         }
+
+        public SpriteFont getFont(string fontId)
+        {
+            return fonts[fontId];
+        }
     }
 }

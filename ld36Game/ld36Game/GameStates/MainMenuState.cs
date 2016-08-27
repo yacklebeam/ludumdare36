@@ -32,7 +32,6 @@ namespace ld36Game.GameStates
         KeyboardState oldState;
         AssetManager aManager;
 
-        private const string TITLE = "SPEAR CHUCKERS";
         public SpriteFont spriteFont;
 
         Vector2 position;
@@ -111,7 +110,7 @@ namespace ld36Game.GameStates
             Vector2 location = position;
             Color tint;
 
-            spriteFont = aManager.loadFontAsset("menu-font", "fonts/MenuFont", );
+            spriteFont = aManager.getFont("menu-fonts");
 
             for (int i = 0; i < menuItems.Length; i++)
             {

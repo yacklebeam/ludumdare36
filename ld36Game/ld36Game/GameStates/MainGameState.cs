@@ -59,11 +59,8 @@ namespace ld36Game.GameStates
             spriteBatch = new SpriteBatch(GraphicsDevice);
             aManager.loadImageAsset("character-bits", "images/characters", Content);
             aManager.loadImageAsset("map-tiles", "images/maptiles", Content);
-<<<<<<< HEAD
             aManager.loadFontAsset("menu-fonts", "fonts/MenuFont", Content);
-=======
             aManager.loadImageAsset("normal-cursor", "images/cursor-normal", Content);
->>>>>>> f2b6a42dc8d36d1455399be925dfbd2681dbec4d
         }
 
         protected override void UnloadContent()

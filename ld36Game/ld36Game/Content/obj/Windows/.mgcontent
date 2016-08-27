@@ -4,19 +4,11 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-<<<<<<< HEAD
     <File>F:/projects/ludumdare36/ld36Game/ld36Game/Content/fonts/MenuFont.spritefont</File>
     <File>F:/projects/ludumdare36/ld36Game/ld36Game/Content/fonts/TitleFont.spritefont</File>
     <File>F:/projects/ludumdare36/ld36Game/ld36Game/Content/images/SplashScreen.jpg</File>
     <File>F:/projects/ludumdare36/ld36Game/ld36Game/Content/images/characters.png</File>
     <File>F:/projects/ludumdare36/ld36Game/ld36Game/Content/images/maptiles.png</File>
-=======
-    <File>K:/ludumdare36/ld36Game/ld36Game/Content/fonts/MenuFont.spritefont</File>
-    <File>K:/ludumdare36/ld36Game/ld36Game/Content/fonts/TitleFont.spritefont</File>
-    <File>K:/ludumdare36/ld36Game/ld36Game/Content/images/SplashScreen.jpg</File>
-    <File>K:/ludumdare36/ld36Game/ld36Game/Content/images/characters.png</File>
-    <File>K:/ludumdare36/ld36Game/ld36Game/Content/images/maptiles.png</File>
-    <File>K:/ludumdare36/ld36Game/ld36Game/Content/images/cursor-normal.png</File>
->>>>>>> f2b6a42dc8d36d1455399be925dfbd2681dbec4d
+    <File>F:/projects/ludumdare36/ld36Game/ld36Game/Content/images/cursor-normal.png</File>
   </SourceFiles>
 </SourceFileCollection>
