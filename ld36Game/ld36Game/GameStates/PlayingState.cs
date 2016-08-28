@@ -127,7 +127,7 @@ namespace ld36Game.GameStates
             if(parent.game.getPlayerStats().lives <= 0)
             {
                 //game over.
-                parent.game.Exit();
+                parent.setEndGameState(false);
             }
             oldState = kState;
         }

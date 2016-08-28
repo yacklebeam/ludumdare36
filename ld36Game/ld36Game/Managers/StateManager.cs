@@ -17,6 +17,7 @@ namespace ld36Game.Managers
 
         private MainMenuState mainMenuState;
         private PlayingState playingState;
+        private EndGameState endGameState;
 
         public StateManager(MainGameState parent)
         {
@@ -24,6 +25,7 @@ namespace ld36Game.Managers
 
             mainMenuState = new MainMenuState(this);
             playingState = new PlayingState(this);
+            endGameState = new EndGameState(this);
             currentState = mainMenuState;
         } 
 
@@ -40,6 +42,12 @@ namespace ld36Game.Managers
         public void setMainMenuState()
         {
             currentState = mainMenuState;
+        }
+
+        public void setEndGameState(bool win)
+        {
+            currentState = endGameState;
+            endGameState.setEndGameType(win);
         }
     }
 }

@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GameStates\BaseGameState.cs" />
+    <Compile Include="GameStates\EndGameState.cs" />
     <Compile Include="GameStates\MainMenuState.cs" />
     <Compile Include="GameStates\PlayingState.cs" />
     <Compile Include="Managers\AssetManager.cs" />
