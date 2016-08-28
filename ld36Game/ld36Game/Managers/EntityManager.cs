@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using static ld36Game.GameStates.MainGameState;
 
 namespace ld36Game.Managers
 {
@@ -196,7 +197,8 @@ namespace ld36Game.Managers
                     if (levelManager.isEndPoint(e.currentMapPathId))
                     {
                         //entity should die!
-                        parent.stats.health -= entities[i].spriteIndexes[7];
+                        PlayerStats curStats = parent.getPlayerStats();
+                        parent.setPlayerStats(curStats.Gold, curStats.Score, curStats.Level, curStats.Lives);
                         entities[i] = null;
                         /*int spawnTileId = levelManager.getSpawnPoint();
                         int startingPath = levelManager.getPathIdFromStart(spawnTileId);
