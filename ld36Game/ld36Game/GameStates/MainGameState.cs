@@ -29,26 +29,10 @@ namespace ld36Game.GameStates
 
         protected struct PlayerStats
         {
-            public int Gold
-            {
-                get { return Gold; }
-                set { }
-            }
-            public int Score
-            {
-                get { return Score; }
-                set { }
-            }
-            public int Level
-            {
-                get { return Level; }
-                set { }
-            }
-            public int Lives
-            {
-                get { return Lives; }
-                set { }
-            }
+            public int gold;
+            public int score;
+            public int level;
+            public int lives;
         }
 
         PlayerStats playerStats = new PlayerStats();
@@ -108,18 +92,18 @@ namespace ld36Game.GameStates
 
         public void setPlayerStats(int gold, int score, int level, int lives)
         {
-            playerStats.Gold = gold;
-            playerStats.Score = score;
-            playerStats.Level = level;
-            playerStats.Lives = lives;
+            playerStats.gold = gold;
+            playerStats.score = score;
+            playerStats.level = level;
+            playerStats.lives = lives;
         }
 
         public void resetPlayerStats()
         {
-            playerStats.Gold = 0;
-            playerStats.Score = 0;
-            playerStats.Level = 1;
-            playerStats.Lives = 3;
+            playerStats.gold = 0;
+            playerStats.score = 0;
+            playerStats.level = 1;
+            playerStats.lives = 3;
         }
 
         public void setMouseColor(Color c)
