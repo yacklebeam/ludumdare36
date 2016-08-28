@@ -98,8 +98,8 @@ namespace ld36Game.Managers
             int skinColor = rnd.Next(0, 3);
             int skinIndex = skinColor * 2;
 
-            if (id == 1) return new int[] { skinIndex, 65, 2, -1, -1, -1, 100, 1};
-            if (id == 2) return new int[] { skinIndex, 101, 2, -1, 74, -1, 150, 1 };
+            if (id == 1) return new int[] { skinIndex, 65, 2, -1, -1, -1, 50, 1};
+            if (id == 2) return new int[] { skinIndex, 101, 2, -1, 74, -1, 100, 1 };
             if (id == 3) return new int[] { skinIndex, 12, -1, -1, 32, -1, 200, 1 };
             if (id == 4) return new int[] { skinIndex, 39, 12, 24, 21, 48, 150, 2 };
             if (id == 5) return new int[] { skinIndex, 55, 2, -1, 74, 1, 150, 2 };

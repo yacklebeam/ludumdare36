@@ -161,7 +161,11 @@ namespace ld36Game.Managers
 
         public void kill(int i)
         {
-            entities[i] = null;
+            entities[i].spriteIndexes[7]--;
+            if(entities[i].spriteIndexes[7] <= 0)
+            {
+                entities[i] = null;
+            }
         }
 
         public void update(GameTime time, LevelManager levelManager)
@@ -192,6 +196,7 @@ namespace ld36Game.Managers
                     if (levelManager.isEndPoint(e.currentMapPathId))
                     {
                         //entity should die!
+                        parent.stats.health -= entities[i].spriteIndexes[7];
                         entities[i] = null;
                         /*int spawnTileId = levelManager.getSpawnPoint();
                         int startingPath = levelManager.getPathIdFromStart(spawnTileId);

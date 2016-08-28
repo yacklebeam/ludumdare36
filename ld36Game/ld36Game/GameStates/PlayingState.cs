@@ -123,6 +123,12 @@ namespace ld36Game.GameStates
             if (kState.IsKeyDown(Keys.P) && oldState.IsKeyUp(Keys.P)) eManager.togglePaused();
             eManager.update(gameTime, parent.game.levelManager);
             tManager.update(gameTime);
+            
+            if(parent.game.stats.health <= 0)
+            {
+                //game over.
+                parent.game.Exit();
+            }
             oldState = kState;
         }
     }

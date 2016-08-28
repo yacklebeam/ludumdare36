@@ -16,6 +16,20 @@ using Microsoft.Xna.Framework.Content;
 
 namespace ld36Game.GameStates
 {
+    public class PlayerStats
+    {
+        public int health;
+        public int gold;
+        public int points;
+
+        public PlayerStats(int h, int g, int p)
+        {
+            health = h;
+            gold = g;
+            points = p;
+        }
+    }
+
     public class MainGameState : Game
     {
         GraphicsDeviceManager graphics;
@@ -26,6 +40,7 @@ namespace ld36Game.GameStates
         public Color mouseColor;
         public TowerManager tManager;
         SpriteBatch spriteBatch;
+        public PlayerStats stats;
 
         public MainGameState()
         {
@@ -35,6 +50,7 @@ namespace ld36Game.GameStates
             levelManager = new LevelManager();
             tManager = new TowerManager(this);
             sManager = new StateManager(this);
+            stats = new PlayerStats(100, 1000, 0);
 
             Content.RootDirectory = "Content";
 

@@ -60,7 +60,7 @@ namespace ld36Game.Managers
 
             towerTypes = new Tower[2];
             towerTypes[0] = new Tower(new Vector2(0, 0), 1000, 1, 0, 100.0f);
-            towerTypes[1] = new Tower(new Vector2(0, 0), 500, 2, 1, 100.0f);
+            towerTypes[1] = new Tower(new Vector2(0, 0), 100, 2, 1, 300.0f);
         }
 
         public int getTowerTypeCount()
