@@ -46,9 +46,20 @@ namespace ld36Game.GameStates
         public MainMenuState(StateManager p) : base(p)
         {
             aManager = parent.game.aManager;
+            playSound();
+        }
 
-            introTheme = aManager.getSound("intro-theme");
-            introTheme.Play();
+        public void playSound()
+        {
+            try
+            {
+                introTheme = aManager.getSound("intro-theme");
+                introTheme.Play();
+            }
+            catch
+            {
+                new ArgumentNullException();
+            }
         }
 
         public int SelectedIndex
