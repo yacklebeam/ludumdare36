@@ -45,6 +45,7 @@ namespace ld36Game.GameStates
             levelManager = new LevelManager();
             tManager = new TowerManager(this);
             sManager = new StateManager(this);
+            resetPlayerStats();
 
             Content.RootDirectory = "Content";
 

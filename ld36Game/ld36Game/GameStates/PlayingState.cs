@@ -124,7 +124,7 @@ namespace ld36Game.GameStates
             eManager.update(gameTime, parent.game.levelManager);
             tManager.update(gameTime);
             
-            if(parent.game.getPlayerStats().Lives <= 0)
+            if(parent.game.getPlayerStats().lives <= 0)
             {
                 //game over.
                 parent.game.Exit();

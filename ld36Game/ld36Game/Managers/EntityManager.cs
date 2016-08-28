@@ -198,7 +198,7 @@ namespace ld36Game.Managers
                     {
                         //entity should die!
                         PlayerStats curStats = parent.getPlayerStats();
-                        parent.setPlayerStats(curStats.Gold, curStats.Score, curStats.Level, curStats.Lives);
+                        parent.setPlayerStats(curStats.gold, curStats.score, curStats.level, curStats.lives - entities[i].spriteIndexes[7]);
                         entities[i] = null;
                         /*int spawnTileId = levelManager.getSpawnPoint();
                         int startingPath = levelManager.getPathIdFromStart(spawnTileId);
