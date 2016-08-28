@@ -129,6 +129,12 @@ namespace ld36Game.GameStates
                 //game over.
                 parent.setEndGameState(false);
             }
+
+            if(eManager.getRemainingEnemyCount() <= 0)
+            {
+                parent.setEndGameState(true);
+            }
+
             oldState = kState;
         }
     }

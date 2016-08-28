@@ -52,6 +52,7 @@ namespace ld36Game.Managers
         MainGameState parent;
         int spawnIndex = 0;
         bool paused = true;
+        int levelEnemyCount = 0;
 
         public EntityManager(MainGameState p)
         {
@@ -136,6 +137,7 @@ namespace ld36Game.Managers
                 string spawnId = spawnList[spawnIndex];
                 if (spawnId == "0")
                 {
+                    levelEnemyCount--;
                     //skip
                     spawnIndex++;
                 }
@@ -157,6 +159,7 @@ namespace ld36Game.Managers
             resetSpawnTimer();
             spawnList = parent.levelManager.getSpawnList();
             spawnTick = Convert.ToInt32(spawnList[0], 16);
+            levelEnemyCount = spawnList.Count - 1;
             spawnIndex = 1;
         }
 
@@ -165,8 +168,14 @@ namespace ld36Game.Managers
             entities[i].spriteIndexes[7]--;
             if(entities[i].spriteIndexes[7] <= 0)
             {
+                levelEnemyCount--;
                 entities[i] = null;
             }
+        }
+
+        public int getRemainingEnemyCount()
+        {
+            return levelEnemyCount;
         }
 
         public void update(GameTime time, LevelManager levelManager)
