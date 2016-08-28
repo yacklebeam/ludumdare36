@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>K:/ludumdare36/ld36Game/ld36Game/Content/fonts/MenuFontHlight.spritefont</SourceFile>
-  <SourceTime>2016-08-27T09:39:52.1543342-07:00</SourceTime>
-  <DestFile>K:/ludumdare36/ld36Game/ld36Game/Content/bin/Windows/fonts/MenuFontHlight.xnb</DestFile>
-  <DestTime>2016-08-27T09:39:58.3246871-07:00</DestTime>
+  <SourceFile>F:/projects/ludumdare36/ld36Game/ld36Game/Content/fonts/MenuFontHlight.spritefont</SourceFile>
+  <SourceTime>2016-08-27T09:21:09.9095045-07:00</SourceTime>
+  <DestFile>F:/projects/ludumdare36/ld36Game/ld36Game/Content/bin/Windows/fonts/MenuFontHlight.xnb</DestFile>
+  <DestTime>2016-08-27T15:34:52.9618121-07:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2016-03-29T23:36:08-07:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

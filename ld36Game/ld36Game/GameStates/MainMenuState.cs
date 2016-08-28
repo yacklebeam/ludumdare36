@@ -10,6 +10,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 
 using ld36Game.Managers;
 
@@ -34,6 +35,7 @@ namespace ld36Game.GameStates
         SpriteFont hlightFont;
         SpriteFont normalFont;
         SpriteFont spriteFont;
+        SoundEffect introTheme;
 
         public String GameMode;
 
@@ -44,6 +46,20 @@ namespace ld36Game.GameStates
         public MainMenuState(StateManager p) : base(p)
         {
             aManager = parent.game.aManager;
+            playSound();
+        }
+
+        public void playSound()
+        {
+            try
+            {
+                introTheme = aManager.getSound("intro-theme");
+                introTheme.Play();
+            }
+            catch
+            {
+                new ArgumentNullException();
+            }
         }
 
         public int SelectedIndex

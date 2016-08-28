@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>K:/ludumdare36/ld36Game/ld36Game/Content/fonts/TitleFont.spritefont</SourceFile>
-  <SourceTime>2016-08-26T20:42:14.1926514-07:00</SourceTime>
-  <DestFile>K:/ludumdare36/ld36Game/ld36Game/Content/bin/Windows/fonts/TitleFont.xnb</DestFile>
-  <DestTime>2016-08-27T09:37:53.4645455-07:00</DestTime>
+  <SourceFile>F:/projects/ludumdare36/ld36Game/ld36Game/Content/fonts/TitleFont.spritefont</SourceFile>
+  <SourceTime>2016-08-27T09:21:09.9251807-07:00</SourceTime>
+  <DestFile>F:/projects/ludumdare36/ld36Game/ld36Game/Content/bin/Windows/fonts/TitleFont.xnb</DestFile>
+  <DestTime>2016-08-27T09:56:50.1577532-07:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2016-03-29T23:36:08-07:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

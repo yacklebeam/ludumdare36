@@ -79,3 +79,9 @@
 /processorParam:TextureFormat=Color
 /build:images/MenuBackground.png
 
+#begin sounds/IntroTheme.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/IntroTheme.wav
+

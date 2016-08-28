@@ -42,6 +42,32 @@ namespace ld36Game.GameStates
         SpriteBatch spriteBatch;
         public PlayerStats stats;
 
+        protected struct PlayerStats
+        {
+            public int Gold
+            {
+                get { return Gold; }
+                set { }
+            }
+            public int Score
+            {
+                get { return Score; }
+                set { }
+            }
+            public int Level
+            {
+                get { return Level; }
+                set { }
+            }
+            public int Lives
+            {
+                get { return Lives; }
+                set { }
+            }
+        }
+
+        PlayerStats playerStats = new PlayerStats();
+
         public MainGameState()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -82,6 +108,7 @@ namespace ld36Game.GameStates
             aManager.loadFontAsset("menu-font", "fonts/MenuFont", Content);
             aManager.loadFontAsset("menu-font-hlight", "fonts/MenuFontHlight", Content);
             aManager.loadImageAsset("normal-cursor", "images/cursor-normal", Content);
+            aManager.loadSoundAsset("intro-theme", "sounds/IntroTheme", Content);
         }
 
         protected override void UnloadContent()
@@ -93,6 +120,22 @@ namespace ld36Game.GameStates
         {
             sManager.getCurrentState().update(gameTime);
             base.Update(gameTime);
+        }
+
+        public void setPlayerStats(int gold, int score, int level, int lives)
+        {
+            playerStats.Gold = gold;
+            playerStats.Score = score;
+            playerStats.Level = level;
+            playerStats.Lives = lives;
+        }
+
+        public void resetPlayerStats()
+        {
+            playerStats.Gold = 0;
+            playerStats.Score = 0;
+            playerStats.Level = 1;
+            playerStats.Lives = 3;
         }
 
         public void setMouseColor(Color c)
